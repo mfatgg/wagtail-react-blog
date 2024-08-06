@@ -89,10 +89,11 @@ afterEach(() => server.resetHandlers());
 afterAll(() => server.close());
 
 test("Search on page load", async () => {
+  const searchPage = () => <SearchPage />;
   render(
     <MemoryRouter initialEntries={["/?query=wagtail"]}>
       <Routes>
-        <Route path="*" element={() => <SearchPage />} />
+        <Route path="*" element={searchPage()} />
       </Routes>
     </MemoryRouter>
   );

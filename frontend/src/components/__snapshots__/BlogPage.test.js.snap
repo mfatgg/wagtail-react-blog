@@ -7,6 +7,7 @@ exports[`BlogPage Test 1`] = `
   >
     <nav
       class="bg-white border-b border-opacity-75 border-gray-300 dark:bg-gray-900 dark:text-white dark:border-gray-500"
+      data-headlessui-state=""
     >
       <div
         class="w-full max-w-7xl mx-auto px-2 sm:px-6 lg:px-8"
@@ -20,7 +21,8 @@ exports[`BlogPage Test 1`] = `
             <button
               aria-expanded="false"
               class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
-              id="headlessui-disclosure-button-1"
+              data-headlessui-state=""
+              id="headlessui-disclosure-button-:r0:"
               type="button"
             >
               <span
@@ -31,16 +33,17 @@ exports[`BlogPage Test 1`] = `
               <svg
                 aria-hidden="true"
                 class="block h-6 w-6"
+                data-slot="icon"
                 fill="none"
                 stroke="currentColor"
+                stroke-width="1.5"
                 viewBox="0 0 24 24"
                 xmlns="http://www.w3.org/2000/svg"
               >
                 <path
-                  d="M4 6h16M4 12h16M4 18h16"
+                  d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
                   stroke-linecap="round"
                   stroke-linejoin="round"
-                  stroke-width="2"
                 />
               </svg>
             </button>
@@ -104,16 +107,17 @@ exports[`BlogPage Test 1`] = `
               <svg
                 aria-hidden="true"
                 class="h-6 w-6"
+                data-slot="icon"
                 fill="none"
                 stroke="currentColor"
+                stroke-width="1.5"
                 viewBox="0 0 24 24"
                 xmlns="http://www.w3.org/2000/svg"
               >
                 <path
-                  d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"
+                  d="M21.752 15.002A9.72 9.72 0 0 1 18 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 0 0 3 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 0 0 9.002-5.998Z"
                   stroke-linecap="round"
                   stroke-linejoin="round"
-                  stroke-width="2"
                 />
               </svg>
             </button>
