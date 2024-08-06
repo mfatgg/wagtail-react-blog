@@ -1,15 +1,15 @@
 import React, { useState } from "react";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 function SearchForm() {
-  let history = useHistory();
+  let navigate = useNavigate();
 
   const [searchQuery, setSearchQuery] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    history.push({
+    navigate({
       pathname: "/search/",
       search: `?query=${searchQuery}`,
     });

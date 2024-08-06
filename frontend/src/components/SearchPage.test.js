@@ -3,7 +3,7 @@ import { rest } from "msw";
 import { render, fireEvent, waitFor, screen } from "@testing-library/react";
 import { setupServer } from "msw/node";
 import SearchPage from "./SearchPage";
-import { Route, Switch } from "react-router";
+import { Route, Routes } from "react-router";
 import { MemoryRouter } from "react-router-dom";
 
 const API_BASE = process.env.REACT_APP_API_BASE;
@@ -91,9 +91,9 @@ afterAll(() => server.close());
 test("Search on page load", async () => {
   render(
     <MemoryRouter initialEntries={["/?query=wagtail"]}>
-      <Switch>
-        <Route path="*" component={() => <SearchPage />} />
-      </Switch>
+      <Routes>
+        <Route path="*" element={() => <SearchPage />} />
+      </Routes>
     </MemoryRouter>
   );
 
