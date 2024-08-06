@@ -13,7 +13,7 @@ const useOnScreen = (ref) => {
     return () => {
       observer.disconnect();
     };
-  }, []);
+  }, [ref]);
 
   return isIntersecting;
 };
