@@ -5,7 +5,7 @@ import { getPage } from "../utils";
 import useOnScreen from "../hooks/useOnScreen";
 
 // https://swr.vercel.app/docs/arguments
-const fetcher = (...args) => {
+const fetcher = (args) => {
   const [url, objectPk, contentType] = args;
   return getPage(url, {
     objectPk: objectPk,
