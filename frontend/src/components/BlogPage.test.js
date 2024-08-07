@@ -7,6 +7,20 @@ import { SideBar } from "./SideBar";
 import camelcaseKeys from "camelcase-keys";
 import { MemoryRouter } from "react-router-dom";
 
+Object.defineProperty(window, 'matchMedia', {
+  writable: true,
+  value: jest.fn().mockImplementation(query => ({
+    matches: false,
+    media: query,
+    onchange: null,
+    addListener: jest.fn(), // deprecated
+    removeListener: jest.fn(), // deprecated
+    addEventListener: jest.fn(),
+    removeEventListener: jest.fn(),
+    dispatchEvent: jest.fn(),
+  })),
+});
+
 jest.mock("./PostPageCardContainer", () => ({
   PostPageCardContainer: jest.fn(({ children }) => (
     <div data-testid="PostPageCardContainer">{children}</div>

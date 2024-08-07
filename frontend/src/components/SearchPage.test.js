@@ -1,10 +1,24 @@
 import React from "react";
-import { rest } from "msw";
+import { http, HttpResponse } from "msw";
 import { render, fireEvent, waitFor, screen } from "@testing-library/react";
 import { setupServer } from "msw/node";
 import SearchPage from "./SearchPage";
 import { Route, Routes } from "react-router";
 import { MemoryRouter } from "react-router-dom";
+
+Object.defineProperty(window, 'matchMedia', {
+  writable: true,
+  value: jest.fn().mockImplementation(query => ({
+    matches: false,
+    media: query,
+    onchange: null,
+    addListener: jest.fn(), // deprecated
+    removeListener: jest.fn(), // deprecated
+    addEventListener: jest.fn(),
+    removeEventListener: jest.fn(),
+    dispatchEvent: jest.fn(),
+  })),
+});
 
 const API_BASE = process.env.REACT_APP_API_BASE;
 
@@ -69,12 +83,13 @@ const page2Response = {
 };
 
 const server = setupServer(
-  rest.get(`${API_BASE}/api/v1/cms/pages/`, (req, res, ctx) => {
-    const offset = req.url.searchParams.get("offset");
+  http.get(`${API_BASE}/api/v1/cms/pages/`, ({ request }) => {
+    const url = new URL(request.url);
+    const offset = url.searchParams.get("offset");
     if (offset === "0") {
-      return res(ctx.json(page1Response));
+      return HttpResponse.json(page1Response);
     } else if (offset === "2") {
-      return res(ctx.json(page2Response));
+      return HttpResponse.json(page2Response);
     }
   })
 );
