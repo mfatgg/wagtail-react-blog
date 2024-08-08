@@ -33,7 +33,7 @@ function PageProxy(props) {
   }
 
   if (pageView) {
-    return <React.Suspense fallback={LoadingScreen}>{pageView}</React.Suspense>;
+    return <React.Suspense fallback={<LoadingScreen />}>{pageView}</React.Suspense>;
   }
   return <div>Error when loading content</div>;
 }
