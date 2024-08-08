@@ -8,8 +8,8 @@ import useOnScreen from "../hooks/useOnScreen";
 const fetcher = (args) => {
   const [url, objectPk, contentType] = args;
   return getPage(url, {
-    objectPk: objectPk,
-    contentType: contentType,
+    objectPk,
+    contentType,
   });
 };
 
@@ -23,7 +23,7 @@ function CommentList(props) {
   const [commentsCount, setCommentsCount] = useState(0);
   const [loadComments, setLoadComments] = useState([]);
 
-  const COMMENTS_API_URL = `/api/v1/comments/`;
+  const COMMENTS_API_URL = "/api/v1/comments/";
   const key = [COMMENTS_API_URL, objectPk, contentType];
   const { data } = useSWR(key, fetcher);
 
@@ -42,8 +42,8 @@ function CommentList(props) {
       getPage(COMMENTS_API_URL, {
         limit: 10,
         offset: loadComments.length,
-        objectPk: objectPk,
-        contentType: contentType,
+        objectPk,
+        contentType,
       }).then((res) => {
         // combine
         const newComments = [...loadComments, ...res.results];

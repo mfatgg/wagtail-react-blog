@@ -64,8 +64,8 @@ export async function postRequest(url, params, options) {
   return camelcaseKeys(data, { deep: true });
 }
 
-export function convertWagtailUrlToRelative(url){
-  return url.replace(API_BASE, '')
+export function convertWagtailUrlToRelative(url) {
+  return url.replace(API_BASE, "");
 }
 
 export function classNames(...classes) {

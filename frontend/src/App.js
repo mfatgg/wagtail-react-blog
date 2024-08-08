@@ -11,7 +11,7 @@ function App() {
       <Routes>
         <Route path="/search/" element={<SearchPage />} />
         <Route path="/_preview/" element={<PreviewPage />} />
-        <Route path="*" element={<PageProxy />}/>
+        <Route path="*" element={<PageProxy />} />
       </Routes>
     </BrowserRouter>
   );

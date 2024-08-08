@@ -1,7 +1,6 @@
-// tailwind.config.js
 module.exports = {
-  content: ['./src/**/*.{js,jsx,ts,tsx}', './public/index.html'],
-  darkMode: 'class', // or 'media' or 'class'
+  content: ["./src/**/*.{js,jsx,ts,tsx}", "./public/index.html"],
+  darkMode: "class", // or 'media' or 'class'
   theme: {
     extend: {
       typography: (theme) => ({
@@ -51,8 +50,5 @@ module.exports = {
       typography: ["dark"],
     },
   },
-  plugins: [
-    require('@tailwindcss/typography'),
-    require('@tailwindcss/forms'),
-  ],
-}
+  plugins: [require("@tailwindcss/typography"), require("@tailwindcss/forms")],
+};

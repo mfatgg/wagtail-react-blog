@@ -1,16 +1,17 @@
 import React from "react";
+import { useLocation, Link } from "react-router-dom";
 import { PostPageCard } from "./PostPageCard";
 import { classNames } from "../utils";
-import { useLocation, Link } from "react-router-dom";
 
 function getPageItems(props, location) {
   const { paginator } = props;
   const { currentPage, numPages } = paginator;
-  let items = [];
+  const items = [];
 
   const curPath = location.pathname;
 
-  let prePageUrl, nextPageUrl;
+  let prePageUrl;
+  let nextPageUrl;
   if (curPath.match(/\/page-[0-9]+/)) {
     prePageUrl = curPath.replace(/\/page-[0-9]+/, `/page-${currentPage - 1}`);
     nextPageUrl = curPath.replace(/\/page-[0-9]+/, `/page-${currentPage + 1}`);

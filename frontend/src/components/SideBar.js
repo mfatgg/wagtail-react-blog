@@ -10,7 +10,7 @@ function SideBar(props) {
       <SearchForm {...props} />
       <CategoryWidget {...props} />
       <TagWidget {...props} />
-      <BookCard/>
+      <BookCard />
     </div>
   );
 }

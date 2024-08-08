@@ -14,7 +14,7 @@ function PreviewPage(props) {
       // convert querystring to dict
       const querystring = location.search.replace(/^\?/, "");
       const params = {};
-      querystring.replace(/([^=&]+)=([^&]*)/g, function (m, key, value) {
+      querystring.replace(/([^=&]+)=([^&]*)/g, (m, key, value) => {
         params[decodeURIComponent(key)] = decodeURIComponent(value);
       });
 
@@ -37,17 +37,13 @@ function PreviewPage(props) {
   }, [location, props]);
 
   if (loading) {
-    return <LoadingScreen/>;
+    return <LoadingScreen />;
   }
 
   if (pageView) {
-    return (
-      <React.Suspense fallback={LoadingScreen}>{pageView}</React.Suspense>
-    );
-  } else {
-    return <div>Error when loading content</div>;
+    return <React.Suspense fallback={LoadingScreen}>{pageView}</React.Suspense>;
   }
+  return <div>Error when loading content</div>;
 }
-
 
 export default PreviewPage;

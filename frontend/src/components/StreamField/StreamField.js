@@ -5,7 +5,7 @@ import { ImageCarousel } from "./ImageCarousel";
 
 function StreamField(props) {
   const streamField = props.value;
-  let html = [];
+  const html = [];
 
   for (let i = 0; i < streamField.length; i++) {
     const field = streamField[i];

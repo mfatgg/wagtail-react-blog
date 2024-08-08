@@ -1,15 +1,15 @@
 import React from "react";
-import BlogPage from "./BlogPage";
 import { screen, render } from "@testing-library/react";
+import camelcaseKeys from "camelcase-keys";
+import { MemoryRouter } from "react-router-dom";
+import BlogPage from "./BlogPage";
 import { blogPageData } from "./mockData";
 import { PostPageCardContainer } from "./PostPageCardContainer";
 import { SideBar } from "./SideBar";
-import camelcaseKeys from "camelcase-keys";
-import { MemoryRouter } from "react-router-dom";
 
-Object.defineProperty(window, 'matchMedia', {
+Object.defineProperty(window, "matchMedia", {
   writable: true,
-  value: jest.fn().mockImplementation(query => ({
+  value: jest.fn().mockImplementation((query) => ({
     matches: false,
     media: query,
     onchange: null,

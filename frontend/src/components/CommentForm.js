@@ -10,7 +10,7 @@ async function getMentionTribute(Tribute, queryData) {
   try {
     const data = await getRequest(url, params);
 
-    let values = [];
+    const values = [];
     for (const index in data.result) {
       const userValue = data.result[index];
       values.push({
@@ -20,7 +20,7 @@ async function getMentionTribute(Tribute, queryData) {
     }
 
     tribute = new Tribute({
-      values: values,
+      values,
     });
   } catch (error) {
     console.error(error);
@@ -36,21 +36,21 @@ async function getEmojiTribute(Tribute) {
   try {
     const data = await getRequest(url);
 
-    let values = [];
+    const values = [];
     for (const key in data) {
       const value = data[key];
       values.push({
-        key: key,
-        value: value,
+        key,
+        value,
       });
     }
     tribute = new Tribute({
       trigger: ":",
-      values: values,
-      menuItemTemplate: function (item) {
+      values,
+      menuItemTemplate(item) {
         return `<img src="${item.original.value}"/>&nbsp;<small>:${item.original.key}:</small>`;
       },
-      selectTemplate: function (item) {
+      selectTemplate(item) {
         return `:${item.original.key}:`;
       },
       menuItemLimit: 5,
@@ -63,8 +63,8 @@ async function getEmojiTribute(Tribute) {
 }
 
 function CommentForm(props) {
-  const {pageContent, refreshForNewComment} = props;
-  const {id: objectPk, contentTypeStr: contentType} = pageContent;
+  const { pageContent, refreshForNewComment } = props;
+  const { id: objectPk, contentTypeStr: contentType } = pageContent;
 
   const commentInput = React.useRef();
   const [displayCommentForm, setDisplayCommentForm] = useState(false);
@@ -79,13 +79,13 @@ function CommentForm(props) {
         objectPk,
       };
 
-      import("tributejs").then(function (Tribute) {
-        getMentionTribute(Tribute.default, queryData).then(function (tribute) {
+      import("tributejs").then((Tribute) => {
+        getMentionTribute(Tribute.default, queryData).then((tribute) => {
           if (tribute) {
             tribute.attach(commentInput.current);
           }
         });
-        getEmojiTribute(Tribute.default).then(function (tributeEmoji) {
+        getEmojiTribute(Tribute.default).then((tributeEmoji) => {
           if (tributeEmoji) {
             tributeEmoji.attach(commentInput.current);
           }
@@ -98,8 +98,8 @@ function CommentForm(props) {
   const handleFormSubmit = (e) => {
     e.preventDefault();
     setIsPosting(true);
-    let formData = new FormData(e.target),
-      formDataObj = Object.fromEntries(formData.entries());
+    const formData = new FormData(e.target);
+    const formDataObj = Object.fromEntries(formData.entries());
     formDataObj.contentType = contentType;
     formDataObj.objectPk = objectPk;
 
@@ -179,18 +179,17 @@ function CommentForm(props) {
         </form>
       </div>
     );
-  } else {
-    return (
-      <div className="mb-4">
-        <button
-          className="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-lg "
-          onClick={() => setDisplayCommentForm(true)}
-        >
-          Write Comment
-        </button>
-      </div>
-    );
   }
+  return (
+    <div className="mb-4">
+      <button
+        className="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-lg "
+        onClick={() => setDisplayCommentForm(true)}
+      >
+        Write Comment
+      </button>
+    </div>
+  );
 }
 
 export { CommentForm };

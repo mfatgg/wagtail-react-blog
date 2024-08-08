@@ -15,7 +15,7 @@ function PageProxy(props) {
       try {
         setLoading(true);
         const data = await getPage(location.pathname);
-        const {pageType} = data;
+        const { pageType } = data;
         const PageComponent = LazyPages[pageType];
         const view = <PageComponent {...props} {...data} />;
         setPageView(view);
@@ -29,16 +29,13 @@ function PageProxy(props) {
   }, [location, props]);
 
   if (loading) {
-    return <LoadingScreen/>;
+    return <LoadingScreen />;
   }
 
   if (pageView) {
-    return (
-      <React.Suspense fallback={LoadingScreen}>{pageView}</React.Suspense>
-    );
-  } else {
-    return <div>Error when loading content</div>;
+    return <React.Suspense fallback={LoadingScreen}>{pageView}</React.Suspense>;
   }
+  return <div>Error when loading content</div>;
 }
 
 export default PageProxy;

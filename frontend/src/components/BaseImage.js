@@ -4,7 +4,7 @@ const API_BASE = process.env.REACT_APP_API_BASE;
 
 function BaseImage({ img, className = "" }) {
   return (
-    <React.Fragment>
+    <>
       {/* eslint-disable-next-line */}
       <img
         className={`${className}`}
@@ -13,7 +13,7 @@ function BaseImage({ img, className = "" }) {
         width={img.width}
         src={`${API_BASE}${img.url}`}
       />
-    </React.Fragment>
+    </>
   );
 }
 

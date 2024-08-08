@@ -6,17 +6,16 @@ import {
   LightBulbIcon,
   MoonIcon,
 } from "@heroicons/react/24/outline";
-import { classNames } from "../utils";
 import { Link } from "react-router-dom";
+import { classNames } from "../utils";
 import useDarkMode from "../hooks/useDarkMode";
 
 const navigation = [
-  {name: "Dashboard", href: "#", current: false},
-  {name: "Team", href: "#", current: false},
-  {name: "Projects", href: "#", current: false},
-  {name: "Calendar", href: "#", current: false},
+  { name: "Dashboard", href: "#", current: false },
+  { name: "Team", href: "#", current: false },
+  { name: "Projects", href: "#", current: false },
+  { name: "Calendar", href: "#", current: false },
 ];
-
 
 function TopNav() {
   const [colorTheme, setColorTheme] = useDarkMode();
@@ -26,27 +25,24 @@ function TopNav() {
       as="nav"
       className="bg-white border-b border-opacity-75 border-gray-300 dark:bg-gray-900 dark:text-white dark:border-gray-500"
     >
-      {({open}) => (
+      {({ open }) => (
         <>
           <div className="w-full max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
             <div className="relative flex items-center justify-between h-16">
               <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
-                {/* Mobile menu button*/}
-                <Disclosure.Button
-                  className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
+                {/* Mobile menu button */}
+                <Disclosure.Button className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
                   <span className="sr-only">Open main menu</span>
                   {open ? (
-                    <XMarkIcon className="block h-6 w-6" aria-hidden="true"/>
+                    <XMarkIcon className="block h-6 w-6" aria-hidden="true" />
                   ) : (
-                    <Bars3Icon className="block h-6 w-6" aria-hidden="true"/>
+                    <Bars3Icon className="block h-6 w-6" aria-hidden="true" />
                   )}
                 </Disclosure.Button>
               </div>
               <div className="flex-1 flex items-center justify-center sm:items-stretch sm:justify-start">
                 <div className="shrink-0 flex items-center">
-                  <Link
-                    to="/"
-                  >
+                  <Link to="/">
                     <span className="text-bold text-grey-800">
                       React Wagtail Demo
                     </span>
@@ -87,7 +83,6 @@ function TopNav() {
                   )}
                 </button>
               </div>
-
             </div>
           </div>
 

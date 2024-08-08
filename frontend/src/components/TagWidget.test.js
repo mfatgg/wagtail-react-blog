@@ -1,9 +1,9 @@
 import React from "react";
 import { render, screen } from "@testing-library/react";
-import { TagWidget } from "./TagWidget";
-import { blogPageData } from "./mockData";
 import camelcaseKeys from "camelcase-keys";
 import { MemoryRouter } from "react-router-dom";
+import { TagWidget } from "./TagWidget";
+import { blogPageData } from "./mockData";
 
 test("TagWidget Test", () => {
   const data = camelcaseKeys(blogPageData, { deep: true });

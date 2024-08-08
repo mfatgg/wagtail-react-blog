@@ -2,13 +2,13 @@ import React from "react";
 import { http, HttpResponse } from "msw";
 import { render, fireEvent, waitFor, screen } from "@testing-library/react";
 import { setupServer } from "msw/node";
-import SearchPage from "./SearchPage";
 import { Route, Routes } from "react-router";
 import { MemoryRouter } from "react-router-dom";
+import SearchPage from "./SearchPage";
 
-Object.defineProperty(window, 'matchMedia', {
+Object.defineProperty(window, "matchMedia", {
   writable: true,
-  value: jest.fn().mockImplementation(query => ({
+  value: jest.fn().mockImplementation((query) => ({
     matches: false,
     media: query,
     onchange: null,
@@ -88,7 +88,8 @@ const server = setupServer(
     const offset = url.searchParams.get("offset");
     if (offset === "0") {
       return HttpResponse.json(page1Response);
-    } else if (offset === "2") {
+    }
+    if (offset === "2") {
       return HttpResponse.json(page2Response);
     }
   })

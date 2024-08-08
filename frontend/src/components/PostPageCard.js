@@ -1,16 +1,16 @@
 import React from "react";
-import { BaseImage } from "./BaseImage";
 import { Link } from "react-router-dom";
+import { BaseImage } from "./BaseImage";
 
 function PostPageCard(props) {
-  const {post} = props;
-  const {pageContent} = post;
+  const { post } = props;
+  const { pageContent } = post;
   const dateStr = new Date(pageContent.lastPublishedAt).toUTCString();
 
   return (
     <div className="mb-4 rounded-lg border border-opacity-75 border-gray-300 shadow-xl overflow-hidden dark:text-white dark:border-gray-500">
       <Link to={pageContent.url}>
-        <BaseImage img={pageContent.headerImage}/>
+        <BaseImage img={pageContent.headerImage} />
       </Link>
       <div className="p-6">
         <h2 className="title-font text-3xl text-blue-900 mb-6 dark:text-white ">

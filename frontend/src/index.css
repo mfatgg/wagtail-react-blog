@@ -4,5 +4,5 @@
 
 /*improve comment form style under dark mode*/
 .tribute-container {
-   @apply dark:bg-gray-300 dark:text-gray-900
+  @apply dark:bg-gray-300 dark:text-gray-900;
 }
