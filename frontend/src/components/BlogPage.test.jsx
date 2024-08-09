@@ -21,17 +21,15 @@ Object.defineProperty(window, "matchMedia", {
   })),
 });
 
-jest.mock("./PostPageCardContainer.jsx", () => ({
-  PostPageCardContainer: jest.fn(({ children }) => (
+jest.mock("./PostPageCardContainer.jsx", () =>
+  jest.fn(({ children }) => (
     <div data-testid="PostPageCardContainer">{children}</div>
-  )),
-}));
+  ))
+);
 
-jest.mock("./SideBar.jsx", () => ({
-  SideBar: jest.fn(({ children }) => (
-    <div data-testid="SideBar">{children}</div>
-  )),
-}));
+jest.mock("./SideBar.jsx", () =>
+  jest.fn(({ children }) => <div data-testid="SideBar">{children}</div>)
+);
 
 test("BlogPage Test", () => {
   const data = camelcaseKeys(blogPageData, { deep: true });
