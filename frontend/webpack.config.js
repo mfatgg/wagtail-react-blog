@@ -1,10 +1,7 @@
 const { merge } = require("webpack-merge");
+const baseConfig = require("./webpack.base.js");
+const developmentConfig = require("./webpack.development.js");
+const productionConfig = require("./webpack.production.js");
 
-const baseConfig = require("./webpack.base");
-
-module.exports = (env) => {
-  const config = require(
-    `./webpack.${env.production ? "production" : "development"}`
-  );
-  return merge(baseConfig, config);
-};
+module.exports = (env) =>
+  merge(baseConfig, env.production ? productionConfig : developmentConfig);

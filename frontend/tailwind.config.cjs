@@ -1,3 +1,6 @@
+const typographyPlugin = require("@tailwindcss/typography");
+const formsPlugin = require("@tailwindcss/forms");
+
 module.exports = {
   content: ["./src/**/*.{js,jsx,ts,tsx}", "./public/index.html"],
   darkMode: "class", // or 'media' or 'class'
@@ -50,5 +53,5 @@ module.exports = {
       typography: ["dark"],
     },
   },
-  plugins: [require("@tailwindcss/typography"), require("@tailwindcss/forms")],
+  plugins: [typographyPlugin, formsPlugin],
 };

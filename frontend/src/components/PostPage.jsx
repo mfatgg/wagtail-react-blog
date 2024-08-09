@@ -1,8 +1,8 @@
 import React from "react";
-import { PostDetail } from "./PostDetail";
-import { SideBar } from "./SideBar";
-import { TopNav } from "./TopNav";
-import { Footer } from "./Footer";
+import PostDetail from "./PostDetail.jsx";
+import SideBar from "./SideBar.jsx";
+import TopNav from "./TopNav.jsx";
+import Footer from "./Footer.jsx";
 
 function PostPage(props) {
   return (

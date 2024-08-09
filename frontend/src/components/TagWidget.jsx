@@ -26,4 +26,4 @@ function TagWidget(props) {
   );
 }
 
-export { TagWidget };
+export default TagWidget;

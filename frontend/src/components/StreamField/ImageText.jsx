@@ -1,5 +1,5 @@
 import React from "react";
-import { BaseImage } from "../BaseImage";
+import BaseImage from "../BaseImage.jsx";
 import { classNames } from "../../utils.js";
 
 function ImageText(props) {
@@ -22,4 +22,4 @@ function ImageText(props) {
   );
 }
 
-export { ImageText };
+export default ImageText;

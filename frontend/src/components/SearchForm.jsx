@@ -42,4 +42,4 @@ function SearchForm() {
   );
 }
 
-export { SearchForm };
+export default SearchForm;

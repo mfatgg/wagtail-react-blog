@@ -4,50 +4,50 @@ import snakecaseKeys from "snakecase-keys";
 
 const API_BASE = process.env.REACT_APP_API_BASE;
 
-export async function getPage(path, params, options) {
-  params = params || {};
-  let relativePath = path;
-  if (relativePath.indexOf("/") !== 0) {
-    relativePath = `/${relativePath}`;
-  }
-
-  return await getRequest(`${API_BASE}${relativePath}`, params, options);
-}
-
-export async function getPagePreview(contentType, token, params, options) {
-  params = params || {};
-  params = {
-    contentType,
-    token,
-    ...params,
-  };
-
-  return await getRequest(
-    `${API_BASE}/api/v1/cms/page_preview/`,
-    params,
-    options
-  );
-}
-
 export async function getRequest(url, params, options) {
-  params = params || {};
-  params = snakecaseKeys(params, { deep: true });
+  let paramsOrEmpty = params || {};
+  paramsOrEmpty = snakecaseKeys(paramsOrEmpty, { deep: true });
 
   let headers = options?.headers || {};
   headers = {
     "Content-Type": "application/json",
     ...headers,
   };
-  const queryString = querystring.stringify(params);
+  const queryString = querystring.stringify(paramsOrEmpty);
   const res = await fetch(`${url}?${queryString}`, { headers });
 
   const data = await res.json();
   return camelcaseKeys(data, { deep: true });
 }
 
+export async function getPage(path, params, options) {
+  const paramsOrEmpty = params || {};
+  let relativePath = path;
+  if (relativePath.indexOf("/") !== 0) {
+    relativePath = `/${relativePath}`;
+  }
+
+  return getRequest(`${API_BASE}${relativePath}`, paramsOrEmpty, options);
+}
+
+export async function getPagePreview(contentType, token, params, options) {
+  let paramsOrEmpty = params || {};
+  paramsOrEmpty = {
+    contentType,
+    token,
+    ...paramsOrEmpty,
+  };
+
+  return getRequest(
+    `${API_BASE}/api/v1/cms/page_preview/`,
+    paramsOrEmpty,
+    options
+  );
+}
+
 export async function postRequest(url, params, options) {
-  params = params || {};
-  params = snakecaseKeys(params, { deep: true });
+  let paramsOrEmpty = params || {};
+  paramsOrEmpty = snakecaseKeys(paramsOrEmpty, { deep: true });
 
   let headers = options?.headers || {};
   headers = {
@@ -57,7 +57,7 @@ export async function postRequest(url, params, options) {
   const res = await fetch(url, {
     method: "POST",
     headers,
-    body: JSON.stringify(params),
+    body: JSON.stringify(paramsOrEmpty),
   });
 
   const data = await res.json();

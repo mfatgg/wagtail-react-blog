@@ -1,7 +1,7 @@
 import React from "react";
-import { BaseImage } from "../BaseImage";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from "react-responsive-carousel";
+import BaseImage from "../BaseImage.jsx";
 
 function ImageCarousel(props) {
   return (
@@ -13,4 +13,4 @@ function ImageCarousel(props) {
   );
 }
 
-export { ImageCarousel };
+export default ImageCarousel;

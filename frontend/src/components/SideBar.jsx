@@ -1,8 +1,8 @@
 import React from "react";
-import { TagWidget } from "./TagWidget";
-import { CategoryWidget } from "./CategoryWidget";
-import { SearchForm } from "./SearchForm";
-import { BookCard } from "./BookCard";
+import TagWidget from "./TagWidget.jsx";
+import CategoryWidget from "./CategoryWidget.jsx";
+import SearchForm from "./SearchForm.jsx";
+import BookCard from "./BookCard.jsx";
 
 function SideBar(props) {
   return (
@@ -15,4 +15,4 @@ function SideBar(props) {
   );
 }
 
-export { SideBar };
+export default SideBar;

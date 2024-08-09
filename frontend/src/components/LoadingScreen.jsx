@@ -8,4 +8,4 @@ function LoadingScreen() {
   );
 }
 
-export { LoadingScreen };
+export default LoadingScreen;

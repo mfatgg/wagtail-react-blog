@@ -7,8 +7,8 @@ import {
   MoonIcon,
 } from "@heroicons/react/24/outline";
 import { Link } from "react-router-dom";
-import { classNames } from "../utils";
-import useDarkMode from "../hooks/useDarkMode";
+import { classNames } from "../utils.js";
+import useDarkMode from "../hooks/useDarkMode.js";
 
 const navigation = [
   { name: "Dashboard", href: "#", current: false },
@@ -111,4 +111,4 @@ function TopNav() {
   );
 }
 
-export { TopNav };
+export default TopNav;

@@ -1,4 +1,4 @@
-export const blogPageData = {
+const blogPageData = {
   page_type: "BlogPage",
   page_content: {
     id: 3,
@@ -222,3 +222,5 @@ export const blogPageData = {
     filter_term: null,
   },
 };
+
+export default blogPageData;

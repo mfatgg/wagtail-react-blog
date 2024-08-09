@@ -1,7 +1,7 @@
 import React from "react";
-import { ThumbnailGallery } from "./ThumbnailGallery";
-import { ImageText } from "./ImageText";
-import { ImageCarousel } from "./ImageCarousel";
+import ThumbnailGallery from "./ThumbnailGallery.jsx";
+import ImageText from "./ImageText.jsx";
+import ImageCarousel from "./ImageCarousel.jsx";
 
 function StreamField(props) {
   const streamField = props.value;
@@ -60,4 +60,4 @@ function StreamField(props) {
   return html;
 }
 
-export { StreamField };
+export default StreamField;

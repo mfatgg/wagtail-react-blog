@@ -17,4 +17,4 @@ function BaseImage({ img, className = "" }) {
   );
 }
 
-export { BaseImage };
+export default BaseImage;

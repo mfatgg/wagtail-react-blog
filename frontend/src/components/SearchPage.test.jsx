@@ -4,7 +4,7 @@ import { render, fireEvent, waitFor, screen } from "@testing-library/react";
 import { setupServer } from "msw/node";
 import { Route, Routes } from "react-router";
 import { MemoryRouter } from "react-router-dom";
-import SearchPage from "./SearchPage";
+import SearchPage from "./SearchPage.jsx";
 
 Object.defineProperty(window, "matchMedia", {
   writable: true,

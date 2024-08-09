@@ -26,4 +26,4 @@ function CategoryWidget(props) {
   );
 }
 
-export { CategoryWidget };
+export default CategoryWidget;

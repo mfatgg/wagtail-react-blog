@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { BaseImage } from "./BaseImage";
+import BaseImage from "./BaseImage.jsx";
 
 function PostPageCard(props) {
   const { post } = props;
@@ -32,4 +32,4 @@ function PostPageCard(props) {
   );
 }
 
-export { PostPageCard };
+export default PostPageCard;

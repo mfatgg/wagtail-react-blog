@@ -1,7 +1,7 @@
 import React from "react";
-import { StreamField } from "./StreamField/StreamField";
-import { BaseImage } from "./BaseImage";
-import { CommentList } from "./CommentList";
+import StreamField from "./StreamField/StreamField.jsx";
+import BaseImage from "./BaseImage.jsx";
+import CommentList from "./CommentList.jsx";
 
 function PostDetail(props) {
   const { pageContent } = props;
@@ -22,4 +22,4 @@ function PostDetail(props) {
   );
 }
 
-export { PostDetail };
+export default PostDetail;

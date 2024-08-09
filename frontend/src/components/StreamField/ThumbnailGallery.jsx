@@ -1,5 +1,5 @@
 import React from "react";
-import { BaseImage } from "../BaseImage";
+import BaseImage from "../BaseImage.jsx";
 
 function ThumbnailGallery(props) {
   const { value } = props;
@@ -25,4 +25,4 @@ function ThumbnailGallery(props) {
   );
 }
 
-export { ThumbnailGallery };
+export default ThumbnailGallery;

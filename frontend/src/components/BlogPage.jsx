@@ -1,8 +1,8 @@
 import React from "react";
-import { TopNav } from "./TopNav";
-import { Footer } from "./Footer";
-import { SideBar } from "./SideBar";
-import { PostPageCardContainer } from "./PostPageCardContainer";
+import TopNav from "./TopNav.jsx";
+import Footer from "./Footer.jsx";
+import SideBar from "./SideBar.jsx";
+import PostPageCardContainer from "./PostPageCardContainer.jsx";
 
 function BlogPage(props) {
   return (

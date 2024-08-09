@@ -29,4 +29,4 @@ function BookCard() {
   );
 }
 
-export { BookCard };
+export default BookCard;

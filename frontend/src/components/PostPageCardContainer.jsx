@@ -1,7 +1,7 @@
 import React from "react";
 import { useLocation, Link } from "react-router-dom";
-import { PostPageCard } from "./PostPageCard";
-import { classNames } from "../utils";
+import PostPageCard from "./PostPageCard.jsx";
+import { classNames } from "../utils.js";
 
 function getPageItems(props, location) {
   const { paginator } = props;
@@ -99,4 +99,4 @@ function PostPageCardContainer(props) {
   );
 }
 
-export { PostPageCardContainer };
+export default PostPageCardContainer;

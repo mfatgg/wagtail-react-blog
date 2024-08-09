@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { postRequest, getRequest, classNames } from "../utils";
+import { postRequest, getRequest, classNames } from "../utils.js";
 
 const API_BASE = process.env.REACT_APP_API_BASE;
 
@@ -192,4 +192,4 @@ function CommentForm(props) {
   );
 }
 
-export { CommentForm };
+export default CommentForm;
