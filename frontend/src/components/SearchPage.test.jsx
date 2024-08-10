@@ -2,8 +2,7 @@ import React from "react";
 import { http, HttpResponse } from "msw";
 import { render, fireEvent, waitFor, screen } from "@testing-library/react";
 import { setupServer } from "msw/node";
-import { Route, Routes } from "react-router";
-import { MemoryRouter } from "react-router-dom";
+import { MemoryRouter, Route, Routes } from "react-router-dom";
 import SearchPage from "./SearchPage.jsx";
 
 Object.defineProperty(window, "matchMedia", {
@@ -92,6 +91,7 @@ const server = setupServer(
     if (offset === "2") {
       return HttpResponse.json(page2Response);
     }
+    return undefined;
   })
 );
 
