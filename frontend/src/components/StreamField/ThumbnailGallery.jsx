@@ -7,10 +7,7 @@ function ThumbnailGallery(props) {
   return (
     <div className="flex flex-row flex-wrap">
       {value.map((imageItem, index) => (
-        <div
-          className="w-full md:w-2/4 lg:w-1/3 px-2"
-          key={key}
-        >
+        <div className="w-full md:w-2/4 lg:w-1/3 px-2" key={key}>
           <a
             aria-label={`Thumbnail${index}`}
             href={imageItem.url}
