@@ -1,5 +1,7 @@
 import React from "react";
 import { v4 as uuidv4 } from "uuid";
+import DOMPurify from "dompurify";
+import HtmlReactParser from "html-react-parser";
 import ThumbnailGallery from "./ThumbnailGallery.jsx";
 import ImageText from "./ImageText.jsx";
 import ImageCarousel from "./ImageCarousel.jsx";
@@ -29,11 +31,11 @@ function StreamField(props) {
         </div>
       );
     } else if (field.type === "paragraph") {
+      const sanitizedData = DOMPurify.sanitize(field.value);
+      const parsedData = HtmlReactParser(sanitizedData);
       html.push(
         <div className="prose lg:prose-lg xl:prose-xl dark:prose-dark">
-          <div key={uuidv4()}>
-            <div dangerouslySetInnerHTML={{ __html: field.value }} />
-          </div>
+          <div key={uuidv4()}>{parsedData}</div>
         </div>
       );
     } else if (field.type === "thumbnail_gallery") {

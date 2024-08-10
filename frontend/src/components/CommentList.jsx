@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import useSWR, { mutate } from "swr";
+import DOMPurify from "dompurify";
+import HtmlReactParser from "html-react-parser";
 import CommentForm from "./CommentForm.jsx";
 import { getPage } from "../utils.js";
 import useOnScreen from "../hooks/useOnScreen.js";
@@ -46,7 +48,16 @@ function CommentList(props) {
         contentType,
       }).then((res) => {
         // combine
-        const newComments = [...loadComments, ...res.results];
+        let newComments = [...loadComments, ...res.results];
+
+        // sanitize and parse comment for html display
+        newComments = newComments.map((item) => {
+          const sanitizedData = DOMPurify.sanitize(item.prettyComment);
+          const parsedData = HtmlReactParser(sanitizedData);
+          item.parsedComment = parsedData;
+          return item;
+        });
+
         setLoadComments(newComments);
       });
     }
@@ -78,9 +89,7 @@ function CommentList(props) {
               <strong className="text-primary">{commentObj.userName}</strong>{" "}
               <small>{new Date(commentObj.submitDate).toString()}</small>
             </div>
-            <div
-              dangerouslySetInnerHTML={{ __html: commentObj.prettyComment }}
-            />
+            {commentObj.parsedComment}
           </div>
         </div>
       ))}

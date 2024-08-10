@@ -1,9 +1,13 @@
 import React from "react";
+import DOMPurify from "dompurify";
+import HtmlReactParser from "html-react-parser";
 import BaseImage from "../BaseImage.jsx";
 import { classNames } from "../../utils.js";
 
 function ImageText(props) {
   const { value } = props;
+  const sanitizedData = DOMPurify.sanitize(value.text);
+  const parsedData = HtmlReactParser(sanitizedData);
 
   return (
     <div
@@ -16,7 +20,7 @@ function ImageText(props) {
         <BaseImage img={value.image} />
       </div>
       <div className="w-full sm:w-1/3 md:w-1/4 lg:w-5/12 px-2">
-        <div dangerouslySetInnerHTML={{ __html: value.text }} />
+        {parsedData}
       </div>
     </div>
   );
