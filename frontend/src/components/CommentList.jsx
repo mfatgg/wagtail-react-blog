@@ -54,8 +54,7 @@ function CommentList(props) {
         newComments = newComments.map((item) => {
           const sanitizedData = DOMPurify.sanitize(item.prettyComment);
           const parsedData = HtmlReactParser(sanitizedData);
-          item.parsedComment = parsedData;
-          return item;
+          return { ...item, parsedComment: parsedData };
         });
 
         setLoadComments(newComments);

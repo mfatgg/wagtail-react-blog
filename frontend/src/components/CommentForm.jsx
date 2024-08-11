@@ -11,13 +11,12 @@ async function getMentionTribute(Tribute, queryData) {
     const data = await getRequest(url, params);
 
     const values = [];
-    for (const index in data.result) {
-      const userValue = data.result[index];
+    data.result.forEach((userValue) => {
       values.push({
         key: userValue.userName,
         value: userValue.userName,
       });
-    }
+    });
 
     tribute = new Tribute({
       values,
@@ -36,14 +35,7 @@ async function getEmojiTribute(Tribute) {
   try {
     const data = await getRequest(url);
 
-    const values = [];
-    for (const key in data) {
-      const value = data[key];
-      values.push({
-        key,
-        value,
-      });
-    }
+    const values = Object.entries(data).map((key, value) => [key, value]);
     tribute = new Tribute({
       trigger: ":",
       values,
@@ -104,7 +96,7 @@ function CommentForm(props) {
     formDataObj.objectPk = objectPk;
 
     const form = e.target;
-    postRequest(`${API_BASE}/api/v1/comments/`, formDataObj).then((data) => {
+    postRequest(`${API_BASE}/api/v1/comments/`, formDataObj).then(() => {
       form.reset();
       refreshForNewComment();
       setIsPosting(false);
@@ -121,15 +113,15 @@ function CommentForm(props) {
               htmlFor="user_name"
             >
               Username
+              <input
+                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline
+                dark:bg-gray-700 dark:text-white dark:placeholder-gray-400"
+                id="user_name"
+                name="user_name"
+                type="text"
+                placeholder="Username"
+              />
             </label>
-            <input
-              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline
-              dark:bg-gray-700 dark:text-white dark:placeholder-gray-400"
-              id="user_name"
-              name="user_name"
-              type="text"
-              placeholder="Username"
-            />
           </div>
 
           <div className="mb-3">
@@ -138,15 +130,15 @@ function CommentForm(props) {
               htmlFor="user_email"
             >
               Email
+              <input
+                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline
+                dark:bg-gray-700 dark:text-white dark:placeholder-gray-400"
+                id="user_email"
+                name="user_email"
+                type="email"
+                placeholder="Email"
+              />
             </label>
-            <input
-              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline
-              dark:bg-gray-700 dark:text-white dark:placeholder-gray-400"
-              id="user_email"
-              name="user_email"
-              type="email"
-              placeholder="Email"
-            />
           </div>
 
           <div className="mb-3">
@@ -155,15 +147,15 @@ function CommentForm(props) {
               htmlFor="comment"
             >
               Comment
+              <textarea
+                id="comment"
+                name="comment"
+                rows="6"
+                ref={commentInput}
+                className="w-full px-3 py-2 text-gray-700 border rounded-lg focus:outline-none
+                dark:bg-gray-700 dark:text-white dark:placeholder-gray-400"
+              />
             </label>
-            <textarea
-              id="comment"
-              name="comment"
-              rows="6"
-              ref={commentInput}
-              className="w-full px-3 py-2 text-gray-700 border rounded-lg focus:outline-none
-              dark:bg-gray-700 dark:text-white dark:placeholder-gray-400"
-            />
           </div>
 
           <button
@@ -183,6 +175,7 @@ function CommentForm(props) {
   return (
     <div className="mb-4">
       <button
+        type="submit"
         className="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-lg "
         onClick={() => setDisplayCommentForm(true)}
       >

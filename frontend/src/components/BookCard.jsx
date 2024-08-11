@@ -5,7 +5,10 @@ function BookCard() {
     <div className="border rounded-lg border-opacity-75 border-gray-300 shadow-xl overflow-hidden dark:border-gray-500">
       <div className="m-3 lg:m-6">
         <div className="mb-4 px-3 lg:px-8">
-          <a href="https://leanpub.com/react-wagtail">
+          <a
+            aria-label="react-wagtail-book"
+            href="https://leanpub.com/react-wagtail"
+          >
             <img
               src="https://www.accordbox.com/upload/images/build-spa-react-wagtail-cover.original.jpg"
               alt=""

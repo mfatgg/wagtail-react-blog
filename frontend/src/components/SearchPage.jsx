@@ -24,8 +24,8 @@ function SearchPage() {
   useEffect(() => {
     // When page load with querystring, we set searchQuery
     if (searchQueryString && !searchQuery && !btnSearch) {
-      setState((state) => ({
-        ...state,
+      setState((stateSetting) => ({
+        ...stateSetting,
         searchQuery: searchQueryString,
         inputSearch: searchQueryString,
       }));
@@ -44,13 +44,13 @@ function SearchPage() {
       getPage("/api/v1/cms/pages/", params).then((res) => {
         const data = res;
         const newResults = [...loadResults, ...data.items];
-        const hasMore = data.meta.totalCount > newResults.length;
+        const hasMoreSetting = data.meta.totalCount > newResults.length;
 
-        setState((state) => ({
-          ...state,
+        setState((stateSetting) => ({
+          ...stateSetting,
           loading: false,
           loadResults: newResults,
-          hasMore,
+          hasMore: hasMoreSetting,
         }));
       });
     }
@@ -59,8 +59,8 @@ function SearchPage() {
   const handleLoadMoreClick = (e) => {
     e.preventDefault();
 
-    setState((state) => ({
-      ...state,
+    setState((stateSetting) => ({
+      ...stateSetting,
       loading: true,
     }));
   };
@@ -68,8 +68,8 @@ function SearchPage() {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    setState((state) => ({
-      ...state,
+    setState((stateSetting) => ({
+      ...stateSetting,
       btnSearch: true,
       searchQuery: inputSearch,
       loading: true,
@@ -98,10 +98,10 @@ function SearchPage() {
                     placeholder="Search"
                     type="search"
                     defaultValue={inputSearch}
-                    onChange={function (e) {
+                    onChange={(e) => {
                       const { value } = e.target;
-                      setState((state) => ({
-                        ...state,
+                      setState((stateSetting) => ({
+                        ...stateSetting,
                         inputSearch: value,
                       }));
                     }}
@@ -139,6 +139,7 @@ function SearchPage() {
 
               {hasMore && (
                 <button
+                  type="submit"
                   onClick={handleLoadMoreClick}
                   className="bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded-lg"
                 >
