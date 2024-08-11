@@ -1,15 +1,11 @@
-const Dotenv = require("dotenv-webpack");
-const path = require("path");
+import Dotenv from "dotenv-webpack";
 
-module.exports = {
+export default {
   mode: "development",
-  output: {
-    filename: "index_bundle.js",
-  },
   devServer: {
     port: "5000",
     static: {
-      directory: path.join(__dirname, "public"),
+      directory: "./public",
     },
     open: true,
     hot: true,

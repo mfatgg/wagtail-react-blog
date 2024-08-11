@@ -9,9 +9,6 @@ import BlogPage from "./BlogPage.jsx";
 import blogPageData from "./mockData.js";
 import PostPageCardContainer from "./PostPageCardContainer.jsx";
 import SideBar from "./SideBar.jsx";
-import { TextEncoder, TextDecoder } from "util";
-
-Object.assign(global, { TextDecoder, TextEncoder });
 
 Object.defineProperty(window, "matchMedia", {
   writable: true,

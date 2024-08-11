@@ -1,7 +1,7 @@
-const typographyPlugin = require("@tailwindcss/typography");
-const formsPlugin = require("@tailwindcss/forms");
+import typographyPlugin from "@tailwindcss/typography";
+import formsPlugin from "@tailwindcss/forms";
 
-module.exports = {
+export default {
   content: ["./src/**/*.{js,jsx,ts,tsx}", "./public/index.html"],
   darkMode: "class", // or 'media' or 'class'
   theme: {

@@ -5,7 +5,7 @@ import React from "react";
 import { render, screen } from "@testing-library/react";
 import camelcaseKeys from "camelcase-keys";
 import { MemoryRouter } from "react-router-dom";
-import TagWidget from "./TagWidget";
+import TagWidget from "./TagWidget.tsx";
 import blogPageData from "./mockData.js";
 
 test("TagWidget Test", () => {
