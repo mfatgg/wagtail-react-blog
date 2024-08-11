@@ -83,11 +83,11 @@
     "webpack-merge": "^6.0.1"
   },
   "lint-staged": {
-    "*.{js,cjs,mjs}": [
+    "*.{js,jsx,cjs,mjs}": [
       "npm run lint",
       "eslint --cache --fix"
     ],
-    "*.{js,cjs,mjs,css,md,html,json}": "yarn format",
+    "*.{js,jsx,cjs,mjs,css,md,html,json}": "yarn format",
     "*.--write": "prettier --write"
   }
 }
