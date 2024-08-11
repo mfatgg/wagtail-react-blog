@@ -1,8 +1,11 @@
+/**
+ * @jest-environment jsdom
+ */
 import React from "react";
 import { render, screen } from "@testing-library/react";
 import camelcaseKeys from "camelcase-keys";
 import { MemoryRouter } from "react-router-dom";
-import TagWidget from "./TagWidget.jsx";
+import TagWidget from "./TagWidget";
 import blogPageData from "./mockData.js";
 
 test("TagWidget Test", () => {

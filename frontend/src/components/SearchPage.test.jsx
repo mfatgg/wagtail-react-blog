@@ -1,3 +1,7 @@
+/**
+ * To make importing "msw" work:
+ * @jest-environment jest-fixed-jsdom
+ */
 import React from "react";
 import { http, HttpResponse } from "msw";
 import { render, fireEvent, waitFor, screen } from "@testing-library/react";

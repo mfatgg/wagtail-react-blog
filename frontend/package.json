@@ -9,7 +9,7 @@
     "build": "webpack --env production .",
     "test": "jest",
     "coverage": "jest --coverage",
-    "lint": "eslint . --fix --max-warnings=0 **/*.{js,jsx,cjs,mjs}",
+    "lint": "eslint . --fix --max-warnings=0 **/*.{js,jsx,ts,tsx,cjs,mjs}",
     "format": "prettier . --write",
     "prepare": "cd .. && husky frontend/.husky"
   },
@@ -26,6 +26,8 @@
     "@testing-library/dom": "^10.4.0",
     "@testing-library/react": "^16.0.0",
     "@testing-library/user-event": "^14.5.2",
+    "@tsconfig/node18": "^18.2.4",
+    "@types/jest": "^29.5.12",
     "babel-loader": "^9.1.3",
     "eslint": "^8.57.0",
     "eslint-config-airbnb": "^19.0.4",
@@ -44,6 +46,8 @@
     "lint-staged": "^15.2.8",
     "postcss": "^8.4.41",
     "prettier": "3.3.3",
+    "ts-jest": "^29.2.4",
+    "ts-node-dev": "^2.0.0",
     "webpack": "^5.93.0",
     "webpack-cli": "^5.1.4",
     "webpack-dev-server": "^5.0.4"
@@ -55,7 +59,10 @@
     "@tailwindcss/forms": "^0.5.7",
     "@tailwindcss/typography": "^0.5.13",
     "@testing-library/jest-dom": "^6.4.8",
-    "@types/node": "^22.1.0",
+    "@types/node": "^22.2.0",
+    "@types/react": "^18.3.3",
+    "@types/react-dom": "^18.3.0",
+    "@typescript-eslint/parser": "^8.0.1",
     "autoprefixer": "^10.4.20",
     "camelcase-keys": "^7",
     "css-loader": "^7.1.2",
@@ -78,16 +85,18 @@
     "swr": "^2.2.5",
     "tailwindcss": "^3.4.7",
     "tributejs": "^5.1.3",
+    "ts-loader": "^9.5.1",
+    "typescript": "^5.5.4",
     "uuid": "^10.0.0",
     "web-vitals": "^4.2.3",
     "webpack-merge": "^6.0.1"
   },
   "lint-staged": {
-    "*.{js,jsx,cjs,mjs}": [
+    "*.{js,jsx,ts,tsx,cjs,mjs}": [
       "npm run lint",
       "eslint --cache --fix"
     ],
-    "*.{js,jsx,cjs,mjs,css,md,html,json}": "yarn format",
+    "*.{js,jsx,ts,tsx,cjs,mjs,css,md,html,json}": "yarn format",
     "*.--write": "prettier --write"
   }
 }

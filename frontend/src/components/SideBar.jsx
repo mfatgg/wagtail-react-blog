@@ -1,5 +1,5 @@
 import React from "react";
-import TagWidget from "./TagWidget.jsx";
+import TagWidget from "./TagWidget.tsx";
 import CategoryWidget from "./CategoryWidget.jsx";
 import SearchForm from "./SearchForm.jsx";
 import BookCard from "./BookCard.jsx";

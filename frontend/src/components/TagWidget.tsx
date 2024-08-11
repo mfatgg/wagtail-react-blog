@@ -1,7 +1,16 @@
-import React from "react";
 import { Link } from "react-router-dom";
 
-function TagWidget(props) {
+export interface TagType {
+  name: string;
+  slug: string;
+  url: string;
+}
+
+export interface TagProps {
+  tagsList: TagType[];
+}
+
+function TagWidget(props: TagProps) {
   const { tagsList } = props;
 
   return (
