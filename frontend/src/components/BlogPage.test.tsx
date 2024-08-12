@@ -5,10 +5,10 @@ import React from "react";
 import { screen, render } from "@testing-library/react";
 import camelcaseKeys from "camelcase-keys";
 import { MemoryRouter } from "react-router-dom";
-import BlogPage from "./BlogPage.jsx";
-import blogPageData from "./mockData.js";
-import PostPageCardContainer from "./PostPageCardContainer.jsx";
-import SideBar from "./SideBar.jsx";
+import BlogPage from "./BlogPage";
+import blogPageData from "./mockData";
+import PostPageCardContainer from "./PostPageCardContainer";
+import SideBar from "./SideBar";
 
 Object.defineProperty(window, "matchMedia", {
   writable: true,
@@ -24,13 +24,13 @@ Object.defineProperty(window, "matchMedia", {
   })),
 });
 
-jest.mock("./PostPageCardContainer.jsx", () =>
+jest.mock("./PostPageCardContainer", () =>
   jest.fn(({ children }) => (
     <div data-testid="PostPageCardContainer">{children}</div>
   ))
 );
 
-jest.mock("./SideBar.jsx", () =>
+jest.mock("./SideBar", () =>
   jest.fn(({ children }) => <div data-testid="SideBar">{children}</div>)
 );
 

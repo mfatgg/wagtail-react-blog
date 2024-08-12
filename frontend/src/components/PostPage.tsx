@@ -1,10 +1,12 @@
 import React from "react";
-import PostDetail from "./PostDetail.jsx";
-import SideBar from "./SideBar.jsx";
-import TopNav from "./TopNav.jsx";
-import Footer from "./Footer.jsx";
+import PostDetail, { PostDetailInterface } from "./PostDetail";
+import SideBar, { SideBarInterface } from "./SideBar";
+import TopNav from "./TopNav";
+import Footer from "./Footer";
 
-function PostPage(props) {
+type PostPageInterface = SideBarInterface & PostDetailInterface;
+
+function PostPage(props: PostPageInterface) {
   return (
     <div className="flex flex-col min-h-screen">
       <TopNav />

@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import BaseImage from "./BaseImage.jsx";
+import BaseImage from "./BaseImage";
 
 function PostPageCard(props) {
   const { post } = props;

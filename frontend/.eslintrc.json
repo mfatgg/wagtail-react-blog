@@ -6,6 +6,7 @@
   },
   "extends": [
     "eslint:recommended",
+    "plugin:@typescript-eslint/eslint-recommended",
     "plugin:@typescript-eslint/recommended",
     "plugin:react/recommended",
     "plugin:jest/recommended",
@@ -24,25 +25,48 @@
   "plugins": ["react", "jest", "@typescript-eslint"],
   "rules": {
     "@typescript-eslint/no-unused-vars": "error",
+    "@typescript-eslint/no-useless-constructor": "error",
     "@typescript-eslint/consistent-type-definitions": ["error", "type"],
     "eol-last": "error",
     "import/extensions": [
       "error",
       "ignorePackages",
       {
-        "js": "always",
-        "jsx": "always"
+        "js": "never",
+        "jsx": "never",
+        "ts": "never",
+        "tsx": "never"
       }
     ],
     "indent": ["error", 2],
+    "jsx-a11y/href-no-hash": ["off"],
     "linebreak-style": ["error", "unix"],
+    "max-len": [
+      "warn",
+      {
+        "code": 80,
+        "tabWidth": 2,
+        "comments": 80,
+        "ignoreComments": false,
+        "ignoreTrailingComments": true,
+        "ignoreUrls": true,
+        "ignoreStrings": true,
+        "ignoreTemplateLiterals": true,
+        "ignoreRegExpLiterals": true
+      }
+    ],
+    "multiline-ternary": 0,
+    "no-console": "error",
+    "no-shadow": 0,
     "no-tabs": "error",
     "no-trailing-spaces": "error",
     "no-underscore-dangle": 0,
+    "no-unused-vars": "off",
     "no-use-before-define": "off",
+    "no-useless-constructor": "off",
     "quotes": ["error", "double"],
     "react/jsx-filename-extension": [
-      2,
+      "error",
       { "extensions": [".js", ".jsx", ".ts", ".tsx"] }
     ],
     "react/jsx-indent": ["error", 2],
@@ -51,5 +75,16 @@
     "react/prop-types": 0,
     "react/require-default-props": "off",
     "semi": ["error", "always"]
+  },
+  "settings": {
+    "import/extensions": [".js", ".jsx", ".ts", ".tsx"],
+    "import/parsers": {
+      "@typescript-eslint/parser": [".ts", ".tsx"]
+    },
+    "import/resolver": {
+      "node": {
+        "extensions": [".js", ".jsx", ".ts", ".tsx"]
+      }
+    }
   }
 }

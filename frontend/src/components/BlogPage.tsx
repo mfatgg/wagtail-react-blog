@@ -1,10 +1,15 @@
 import React from "react";
-import TopNav from "./TopNav.jsx";
-import Footer from "./Footer.jsx";
-import SideBar from "./SideBar.jsx";
-import PostPageCardContainer from "./PostPageCardContainer.jsx";
+import TopNav from "./TopNav";
+import Footer from "./Footer";
+import SideBar, { SideBarInterface } from "./SideBar";
+import PostPageCardContainer, {
+  PostPageCardContainerInterface,
+} from "./PostPageCardContainer";
 
-function BlogPage(props) {
+export type BlogPageInterface = PostPageCardContainerInterface &
+  SideBarInterface;
+
+function BlogPage(props: BlogPageInterface) {
   return (
     <div className="flex flex-col min-h-screen">
       <TopNav />

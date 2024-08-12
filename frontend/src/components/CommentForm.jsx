@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { postRequest, getRequest, classNames } from "../utils.js";
+import { postRequest, getRequest, classNames } from "../utils";
 
 const API_BASE = process.env.REACT_APP_API_BASE;
 

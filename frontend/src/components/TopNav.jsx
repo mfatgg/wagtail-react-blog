@@ -7,8 +7,8 @@ import {
   MoonIcon,
 } from "@heroicons/react/24/outline";
 import { Link } from "react-router-dom";
-import { classNames } from "../utils.js";
-import useDarkMode from "../hooks/useDarkMode.js";
+import { classNames } from "../utils";
+import useDarkMode from "../hooks/useDarkMode";
 
 const navigation = [
   { name: "Dashboard", href: "#", current: false },

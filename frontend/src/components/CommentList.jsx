@@ -2,9 +2,9 @@ import React, { useState, useEffect } from "react";
 import useSWR, { mutate } from "swr";
 import DOMPurify from "dompurify";
 import HtmlReactParser from "html-react-parser";
-import CommentForm from "./CommentForm.jsx";
-import { getPage } from "../utils.js";
-import useOnScreen from "../hooks/useOnScreen.js";
+import CommentForm from "./CommentForm";
+import { getPage } from "../utils";
+import useOnScreen from "../hooks/useOnScreen";
 
 // https://swr.vercel.app/docs/arguments
 const fetcher = (args) => {

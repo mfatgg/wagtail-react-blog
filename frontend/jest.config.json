@@ -10,7 +10,7 @@
     "\\.(css|less|scss|sass)$": "identity-obj-proxy"
   },
   "preset": "ts-jest",
-  "setupFilesAfterEnv": ["./jest.setup.js"],
+  "setupFilesAfterEnv": ["./jest.setup.ts"],
   "testEnvironment": "node",
   "testEnvironmentOptions": {
     "customExportConditions": [""]

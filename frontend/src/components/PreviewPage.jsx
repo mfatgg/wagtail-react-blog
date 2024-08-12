@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
-import { getPagePreview } from "../utils.js";
-import LazyPages from "./LazyPages.js";
-import LoadingScreen from "./LoadingScreen.jsx";
+import { getPagePreview } from "../utils";
+import LazyPages from "./LazyPages";
+import LoadingScreen from "./LoadingScreen";
 
 function PreviewPage(props) {
   const location = useLocation();

@@ -1,8 +1,8 @@
 import React from "react";
 import DOMPurify from "dompurify";
 import HtmlReactParser from "html-react-parser";
-import BaseImage from "../BaseImage.jsx";
-import { classNames } from "../../utils.js";
+import BaseImage from "../BaseImage";
+import { classNames } from "../../utils";
 
 function ImageText(props) {
   const { value } = props;

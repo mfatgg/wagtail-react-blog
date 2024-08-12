@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { useLocation, Link } from "react-router-dom";
 import querystring from "query-string";
-import TopNav from "./TopNav.jsx";
-import Footer from "./Footer.jsx";
-import { getPage, convertWagtailUrlToRelative } from "../utils.js";
+import TopNav from "./TopNav";
+import Footer from "./Footer";
+import { getPage, convertWagtailUrlToRelative } from "../utils";
 
 function SearchPage() {
   const location = useLocation();

@@ -1,10 +1,26 @@
 import React from "react";
-import { useLocation, Link } from "react-router-dom";
-import PostPageCard from "./PostPageCard.jsx";
-import { classNames } from "../utils.js";
+import { useLocation, Link, Location } from "react-router-dom";
+import PostPageCard from "./PostPageCard";
+import { classNames } from "../utils";
+import { PostDetailInterface } from "./PostDetail";
 
-function getPageItems(props, location) {
-  const { paginator } = props;
+type PaginatorType = {
+  currentPage: number;
+  numPages: number;
+};
+
+type FilterMetaType = {
+  filterType: string | null;
+  filterTerm: string | null;
+};
+
+export type PostPageCardContainerInterface = {
+  childrenPages: PostDetailInterface[];
+  paginator: PaginatorType;
+  filterMeta: FilterMetaType;
+};
+
+function getPageItems(paginator: PaginatorType, location: Location) {
   const { currentPage, numPages } = paginator;
   const items = [];
 
@@ -59,12 +75,9 @@ function getPageItems(props, location) {
   return items;
 }
 
-function getFilterMsg(props) {
-  const { filterMeta } = props;
-
-  let filterMsg = "";
+function getFilterMsg(filterMeta: FilterMetaType) {
   if (filterMeta.filterType) {
-    filterMsg = (
+    return (
       <div
         className="px-4 py-3 leading-normal text-blue-700 bg-blue-100 rounded-lg mb-4"
         role="alert"
@@ -75,14 +88,17 @@ function getFilterMsg(props) {
       </div>
     );
   }
-  return filterMsg;
+  return "";
 }
 
-function PostPageCardContainer(props) {
-  const { childrenPages } = props;
+function PostPageCardContainer({
+  childrenPages,
+  paginator,
+  filterMeta,
+}: PostPageCardContainerInterface) {
   const location = useLocation();
-  const pageItems = getPageItems(props, location);
-  const filterMsg = getFilterMsg(props);
+  const pageItems = getPageItems(paginator, location);
+  const filterMsg = getFilterMsg(filterMeta);
 
   return (
     <main role="main" className="w-full sm:w-2/3 md:w-3/4 lg:w-8/12 px-2 mb-4">

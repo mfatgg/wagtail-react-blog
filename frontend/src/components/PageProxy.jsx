@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
-import { getPage } from "../utils.js";
-import LazyPages from "./LazyPages.js";
-import LoadingScreen from "./LoadingScreen.jsx";
+import { getPage } from "../utils";
+import LazyPages from "./LazyPages";
+import LoadingScreen from "./LoadingScreen";
 
 function PageProxy(props) {
   const location = useLocation();

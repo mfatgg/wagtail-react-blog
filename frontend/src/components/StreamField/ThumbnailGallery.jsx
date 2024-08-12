@@ -1,5 +1,5 @@
 import React from "react";
-import BaseImage from "../BaseImage.jsx";
+import BaseImage from "../BaseImage";
 
 function ThumbnailGallery(props) {
   const { value, key } = props;

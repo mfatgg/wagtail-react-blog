@@ -2,9 +2,9 @@ import React from "react";
 import { v4 as uuidv4 } from "uuid";
 import DOMPurify from "dompurify";
 import HtmlReactParser from "html-react-parser";
-import ThumbnailGallery from "./ThumbnailGallery.jsx";
-import ImageText from "./ImageText.jsx";
-import ImageCarousel from "./ImageCarousel.jsx";
+import ThumbnailGallery from "./ThumbnailGallery";
+import ImageText from "./ImageText";
+import ImageCarousel from "./ImageCarousel";
 
 function StreamField(props) {
   const streamField = props.value;

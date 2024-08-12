@@ -7,13 +7,11 @@ export type TagType = {
   url: string;
 };
 
-export type TagProps = {
+export type TagsList = {
   tagsList: TagType[];
 };
 
-function TagWidget(props: TagProps) {
-  const { tagsList } = props;
-
+function TagWidget({ tagsList }: TagsList) {
   return (
     <div className="mb-4 border rounded-lg border-opacity-75 border-gray-300 shadow-xl overflow-hidden dark:border-gray-500">
       <div className="bg-gray-100 text-gray-900 px-6 py-4 dark:bg-gray-700 dark:text-gray-400">

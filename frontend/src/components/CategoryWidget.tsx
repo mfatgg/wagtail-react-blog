@@ -1,8 +1,17 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-function CategoryWidget(props) {
-  const { categoriesList } = props;
+export type CategoryType = {
+  name: string;
+  slug: string;
+  url: string;
+};
+
+export type CategoriesList = {
+  categoriesList: CategoryType[];
+};
+
+function CategoryWidget({ categoriesList }: CategoriesList) {
   return (
     <div className="mb-4 border rounded-lg border-opacity-75 border-gray-300 shadow-xl overflow-hidden dark:border-gray-500">
       <div className="bg-gray-100 text-gray-900 px-6 py-4 dark:bg-gray-700 dark:text-gray-400">
