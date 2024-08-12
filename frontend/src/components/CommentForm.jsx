@@ -22,6 +22,7 @@ async function getMentionTribute(Tribute, queryData) {
       values,
     });
   } catch (error) {
+    // eslint-disable-next-line no-console
     console.error(error);
   }
 
@@ -48,6 +49,7 @@ async function getEmojiTribute(Tribute) {
       menuItemLimit: 5,
     });
   } catch (error) {
+    // eslint-disable-next-line no-console
     console.error(error);
   }
 

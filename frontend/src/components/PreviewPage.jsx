@@ -28,6 +28,7 @@ function PreviewPage(props) {
         const view = <PageComponent {...props} {...data} />;
         setPageView(view);
       } catch (err) {
+        // eslint-disable-next-line no-console
         console.log(err);
       }
       setLoading(false);
