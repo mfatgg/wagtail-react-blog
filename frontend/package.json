@@ -9,7 +9,7 @@
     "build": "webpack --env production .",
     "test": "jest",
     "coverage": "jest --coverage",
-    "lint": "eslint . --fix --max-warnings=0 **/*.{js,jsx,ts,tsx,cjs,mjs}",
+    "lint": "eslint . --fix --max-warnings=0 src/*.{js,jsx,ts,tsx,cjs,mjs}",
     "format": "prettier . --write",
     "prepare": "cd .. && husky frontend/.husky"
   },

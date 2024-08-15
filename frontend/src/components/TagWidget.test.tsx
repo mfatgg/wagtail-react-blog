@@ -18,8 +18,8 @@ test("TagWidget Test", () => {
   );
 
   const { tagsList } = data;
-
-  const el = screen.getByText(tagsList[0].name);
+  const firstTag = tagsList?.at(0);
+  const el = screen.getByText(firstTag ? firstTag.name : "NonExistingElement");
   expect(el.tagName).toEqual("SPAN");
 
   tagsList.map((tag) => expect(screen.getByText(tag.name)).toBeInTheDocument());
