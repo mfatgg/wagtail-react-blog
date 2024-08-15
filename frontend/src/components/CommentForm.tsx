@@ -1,17 +1,39 @@
 import React, { useState, useEffect } from "react";
+import { TributeItem } from "tributejs";
+// @ts-ignore
+import Tribute from "tributejs/src/Tribute";
 import { postRequest, getRequest, classNames } from "../utils";
+import { PageContentType } from "./BaseTypes";
 
 const API_BASE = process.env.REACT_APP_API_BASE;
 
-async function getMentionTribute(Tribute, queryData) {
+type QueryDataType = {
+  url: string;
+  contentType: string;
+  objectPk: number;
+};
+
+type UserValue = {
+  userName: string;
+};
+
+type Collection = {
+  key: string;
+  value: string;
+};
+
+async function getMentionTribute(
+  Tribute: Tribute<{ key: string; value: string }>,
+  queryData: QueryDataType
+) {
   const { url, ...params } = queryData;
   let tribute;
 
   try {
     const data = await getRequest(url, params);
 
-    const values = [];
-    data.result.forEach((userValue) => {
+    const values: Collection[] = [];
+    data.result.forEach((userValue: UserValue) => {
       values.push({
         key: userValue.userName,
         value: userValue.userName,
@@ -29,7 +51,9 @@ async function getMentionTribute(Tribute, queryData) {
   return tribute;
 }
 
-async function getEmojiTribute(Tribute) {
+async function getEmojiTribute(
+  Tribute: Tribute<{ key: string; value: string }>
+) {
   const url = "https://api.github.com/emojis";
   let tribute;
 
@@ -40,10 +64,10 @@ async function getEmojiTribute(Tribute) {
     tribute = new Tribute({
       trigger: ":",
       values,
-      menuItemTemplate(item) {
+      menuItemTemplate(item: TributeItem<{ key: string; value: string }>) {
         return `<img src="${item.original.value}"/>&nbsp;<small>:${item.original.key}:</small>`;
       },
-      selectTemplate(item) {
+      selectTemplate(item: TributeItem<{ key: string; value: string }>) {
         return `:${item.original.key}:`;
       },
       menuItemLimit: 5,
@@ -56,18 +80,25 @@ async function getEmojiTribute(Tribute) {
   return tribute;
 }
 
-function CommentForm(props) {
-  const { pageContent, refreshForNewComment } = props;
+type CommentFormInterface = {
+  pageContent: PageContentType;
+  refreshForNewComment: () => object;
+};
+
+function CommentForm({
+  pageContent,
+  refreshForNewComment,
+}: CommentFormInterface) {
   const { id: objectPk, contentTypeStr: contentType } = pageContent;
 
-  const commentInput = React.useRef();
+  const commentInput = React.useRef(null);
   const [displayCommentForm, setDisplayCommentForm] = useState(false);
   const [isPosting, setIsPosting] = useState(false);
   const [commentFormSetup, setCommentFormSetup] = useState(false);
 
   useEffect(() => {
     if (displayCommentForm && !commentFormSetup) {
-      const queryData = {
+      const queryData: QueryDataType = {
         url: `${API_BASE}/api/v1/comment-mentions/`,
         contentType,
         objectPk,
@@ -89,15 +120,15 @@ function CommentForm(props) {
     }
   });
 
-  const handleFormSubmit = (e) => {
-    e.preventDefault();
+  const handleFormSubmit = (event: React.ChangeEvent<HTMLFormElement>) => {
+    event.preventDefault();
     setIsPosting(true);
-    const formData = new FormData(e.target);
+    const formData = new FormData(event.target);
     const formDataObj = Object.fromEntries(formData.entries());
     formDataObj.contentType = contentType;
-    formDataObj.objectPk = objectPk;
+    formDataObj.objectPk = String(objectPk);
 
-    const form = e.target;
+    const form = event.target;
     postRequest(`${API_BASE}/api/v1/comments/`, formDataObj).then(() => {
       form.reset();
       refreshForNewComment();
@@ -152,7 +183,7 @@ function CommentForm(props) {
               <textarea
                 id="comment"
                 name="comment"
-                rows="6"
+                rows={6}
                 ref={commentInput}
                 className="w-full px-3 py-2 text-gray-700 border rounded-lg focus:outline-none
                 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400"

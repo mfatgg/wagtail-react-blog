@@ -1,35 +1,13 @@
 import React from "react";
-import StreamField, { StreamFieldType } from "./StreamField/StreamField";
-import BaseImage, { ImageType } from "./BaseImage";
+import StreamField from "./StreamField/StreamField";
+import BaseImage from "./BaseImage";
 import CommentList from "./CommentList";
-
-type PostContentType = {
-  id: number;
-  slug: string;
-  title: string;
-  url: string;
-  lastPublishedAt: string;
-
-  tags: {
-    name: string;
-    slug: string;
-    id: number;
-  }[];
-  categories: {
-    name: string;
-    slug: string;
-    id: number;
-  }[];
-
-  body: StreamFieldType[];
-  headerImage: ImageType;
-  content_type_str?: string;
-};
+import { PageContentType } from "./BaseTypes";
 
 export type PostDetailInterface = {
   // eslint-disable-next-line react/no-unused-prop-types
   pageType: string;
-  pageContent: PostContentType;
+  pageContent: PageContentType;
 };
 
 function PostDetail({ pageContent }: PostDetailInterface) {

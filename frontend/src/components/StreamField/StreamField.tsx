@@ -9,7 +9,7 @@ import { ImageType } from "../BaseImage";
 
 export type StreamFieldType = {
   type: string;
-  value: string & ImageType[] & ImageTextType;
+  value: string | ImageType[] | ImageTextType;
   id: string;
 };
 
@@ -25,7 +25,7 @@ function StreamField({ value }: StreamFieldInterface) {
       html.push(
         <div className="prose lg:prose-lg xl:prose-xl dark:prose-dark">
           <div key={uuidv4()}>
-            <h1>{field.value}</h1>
+            <h1>{field.value as string}</h1>
           </div>
         </div>
       );
@@ -34,12 +34,12 @@ function StreamField({ value }: StreamFieldInterface) {
         <div className="prose lg:prose-lg xl:prose-xl dark:prose-dark">
           <div key={uuidv4()}>
             {" "}
-            <h2>{field.value}</h2>{" "}
+            <h2>{field.value as string}</h2>{" "}
           </div>
         </div>
       );
     } else if (field.type === "paragraph") {
-      const sanitizedData = DOMPurify.sanitize(field.value);
+      const sanitizedData = DOMPurify.sanitize(field.value as string);
       const parsedData = HtmlReactParser(sanitizedData);
       html.push(
         <div className="prose lg:prose-lg xl:prose-xl dark:prose-dark">
@@ -49,17 +49,19 @@ function StreamField({ value }: StreamFieldInterface) {
     } else if (field.type === "thumbnail_gallery") {
       html.push(
         <div className="prose lg:prose-lg xl:prose-xl dark:prose-dark">
-          <ThumbnailGallery value={field.value} key={uuidv4()} />
+          <ThumbnailGallery value={field.value as ImageType[]} key={uuidv4()} />
         </div>
       );
     } else if (field.type === "image_text") {
       html.push(
         <div className="prose lg:prose-lg xl:prose-xl dark:prose-dark">
-          <ImageText value={field.value} key={uuidv4()} />
+          <ImageText value={field.value as ImageTextType} key={uuidv4()} />
         </div>
       );
     } else if (field.type === "image_carousel") {
-      html.push(<ImageCarousel value={field.value} key={uuidv4()} />);
+      html.push(
+        <ImageCarousel value={field.value as ImageType[]} key={uuidv4()} />
+      );
     } else {
       // fallback empty div
       html.push(<div className={field.type} key={uuidv4()} />);

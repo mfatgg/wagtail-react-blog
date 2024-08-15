@@ -24,6 +24,7 @@
   },
   "plugins": ["react", "jest", "@typescript-eslint"],
   "rules": {
+    "@typescript-eslint/ban-ts-comment": "off",
     "@typescript-eslint/no-unused-vars": "error",
     "@typescript-eslint/no-useless-constructor": "error",
     "@typescript-eslint/consistent-type-definitions": ["error", "type"],
