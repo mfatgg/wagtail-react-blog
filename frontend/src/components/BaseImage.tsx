@@ -2,7 +2,19 @@ import React from "react";
 
 const API_BASE = process.env.REACT_APP_API_BASE;
 
-function BaseImage({ img, className = "" }) {
+export type ImageType = {
+  url: string;
+  width: number;
+  height: number;
+  alt: string;
+};
+
+type BaseImageInterface = {
+  img: ImageType;
+  className?: string;
+};
+
+function BaseImage({ img, className = "" }: BaseImageInterface) {
   return (
     <>
       {/* eslint-disable-next-line */}

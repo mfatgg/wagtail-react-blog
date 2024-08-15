@@ -1,20 +1,7 @@
 import React from "react";
-import StreamField from "./StreamField/StreamField";
-import BaseImage from "./BaseImage";
+import StreamField, { StreamFieldType } from "./StreamField/StreamField";
+import BaseImage, { ImageType } from "./BaseImage";
 import CommentList from "./CommentList";
-
-type ImageType = {
-  url: string;
-  width: number;
-  height: number;
-  alt: string;
-};
-
-type ImageTextType = {
-  reverse: boolean;
-  text: string;
-  image: ImageType;
-};
 
 type PostContentType = {
   id: number;
@@ -34,11 +21,7 @@ type PostContentType = {
     id: number;
   }[];
 
-  body: {
-    type: string;
-    value: string | ImageType[] | ImageTextType;
-    id: string;
-  }[];
+  body: StreamFieldType[];
   headerImage: ImageType;
   content_type_str?: string;
 };

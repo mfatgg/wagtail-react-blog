@@ -1,11 +1,20 @@
 import React from "react";
 import DOMPurify from "dompurify";
 import HtmlReactParser from "html-react-parser";
-import BaseImage from "../BaseImage";
+import BaseImage, { ImageType } from "../BaseImage";
 import { classNames } from "../../utils";
 
-function ImageText(props) {
-  const { value } = props;
+export type ImageTextType = {
+  text: string;
+  image: ImageType;
+  reverse: boolean;
+};
+
+type ImageTextInterface = {
+  value: ImageTextType;
+};
+
+function ImageText({ value }: ImageTextInterface) {
   const sanitizedData = DOMPurify.sanitize(value.text);
   const parsedData = HtmlReactParser(sanitizedData);
 

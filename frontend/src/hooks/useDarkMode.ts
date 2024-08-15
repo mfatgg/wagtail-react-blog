@@ -14,7 +14,7 @@ function useDarkMode() {
     defaultTheme = "light";
   }
 
-  const [colorTheme, setColorTheme] = useState(defaultTheme);
+  const [colorTheme, setColorTheme] = useState<string>(defaultTheme);
 
   useEffect(() => {
     const root = window.document.documentElement;
@@ -28,7 +28,7 @@ function useDarkMode() {
     }
   }, [colorTheme]);
 
-  return [colorTheme, setColorTheme];
+  return [colorTheme, setColorTheme] as const;
 }
 
 export default useDarkMode;

@@ -1,9 +1,12 @@
 import React from "react";
-import BaseImage from "../BaseImage";
+import BaseImage, { ImageType } from "../BaseImage";
 
-function ThumbnailGallery(props) {
-  const { value, key } = props;
+type ThumbnailGalleryInterface = {
+  value: ImageType[];
+  key: string;
+};
 
+function ThumbnailGallery({ value, key }: ThumbnailGalleryInterface) {
   return (
     <div className="flex flex-row flex-wrap">
       {value.map((imageItem, index) => (

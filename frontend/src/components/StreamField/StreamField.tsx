@@ -3,16 +3,24 @@ import { v4 as uuidv4 } from "uuid";
 import DOMPurify from "dompurify";
 import HtmlReactParser from "html-react-parser";
 import ThumbnailGallery from "./ThumbnailGallery";
-import ImageText from "./ImageText";
+import ImageText, { ImageTextType } from "./ImageText";
 import ImageCarousel from "./ImageCarousel";
+import { ImageType } from "../BaseImage";
 
-function StreamField(props) {
-  const streamField = props.value;
-  const html = [];
+export type StreamFieldType = {
+  type: string;
+  value: string & ImageType[] & ImageTextType;
+  id: string;
+};
 
-  for (let i = 0; i < streamField.length; i += 1) {
-    const field = streamField[i];
+type StreamFieldInterface = {
+  value: StreamFieldType[];
+};
 
+function StreamField({ value }: StreamFieldInterface) {
+  const html: React.JSX.Element[] = [];
+
+  value.forEach((field) => {
     if (field.type === "h1") {
       html.push(
         <div className="prose lg:prose-lg xl:prose-xl dark:prose-dark">
@@ -56,7 +64,7 @@ function StreamField(props) {
       // fallback empty div
       html.push(<div className={field.type} key={uuidv4()} />);
     }
-  }
+  });
 
   return html;
 }
