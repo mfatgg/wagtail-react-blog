@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { TributeItem } from "tributejs";
 // @ts-ignore
 import Tribute from "tributejs/src/Tribute";
-import { postRequest, getRequest, classNames } from "../utils";
+import { postRequest, getRequest, classNames, ParamsType } from "../utils";
 import { PageContentType } from "./BaseTypes";
 
 const API_BASE = process.env.REACT_APP_API_BASE;
@@ -82,7 +82,7 @@ async function getEmojiTribute(
 
 type CommentFormInterface = {
   pageContent: PageContentType;
-  refreshForNewComment: () => object;
+  refreshForNewComment: () => void;
 };
 
 function CommentForm({
@@ -129,11 +129,13 @@ function CommentForm({
     formDataObj.objectPk = String(objectPk);
 
     const form = event.target;
-    postRequest(`${API_BASE}/api/v1/comments/`, formDataObj).then(() => {
-      form.reset();
-      refreshForNewComment();
-      setIsPosting(false);
-    });
+    postRequest(`${API_BASE}/api/v1/comments/`, formDataObj as ParamsType).then(
+      () => {
+        form.reset();
+        refreshForNewComment();
+        setIsPosting(false);
+      }
+    );
   };
 
   if (displayCommentForm) {

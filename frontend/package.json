@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "description": "",
-  "main": "./src/index.jsx",
+  "main": "./src/index.tsx",
   "scripts": {
     "start": "webpack-dev-server --env development .",
     "build": "webpack --env production .",

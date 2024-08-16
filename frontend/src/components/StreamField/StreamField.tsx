@@ -1,5 +1,4 @@
 import React from "react";
-import { v4 as uuidv4 } from "uuid";
 import DOMPurify from "dompurify";
 import HtmlReactParser from "html-react-parser";
 import ThumbnailGallery from "./ThumbnailGallery";
@@ -23,48 +22,61 @@ function StreamField({ value }: StreamFieldInterface) {
   value.forEach((field) => {
     if (field.type === "h1") {
       html.push(
-        <div className="prose lg:prose-lg xl:prose-xl dark:prose-dark">
-          <div key={uuidv4()}>
-            <h1>{field.value as string}</h1>
-          </div>
+        <div
+          key={field.id}
+          className="prose lg:prose-lg xl:prose-xl dark:prose-dark"
+        >
+          <h1>{field.value as string}</h1>
         </div>
       );
     } else if (field.type === "h2") {
       html.push(
-        <div className="prose lg:prose-lg xl:prose-xl dark:prose-dark">
-          <div key={uuidv4()}>
-            {" "}
-            <h2>{field.value as string}</h2>{" "}
-          </div>
+        <div
+          key={field.id}
+          className="prose lg:prose-lg xl:prose-xl dark:prose-dark"
+        >
+          {" "}
+          <h2>{field.value as string}</h2>{" "}
         </div>
       );
     } else if (field.type === "paragraph") {
       const sanitizedData = DOMPurify.sanitize(field.value as string);
       const parsedData = HtmlReactParser(sanitizedData);
       html.push(
-        <div className="prose lg:prose-lg xl:prose-xl dark:prose-dark">
-          <div key={uuidv4()}>{parsedData}</div>
+        <div
+          key={field.id}
+          className="prose lg:prose-lg xl:prose-xl dark:prose-dark"
+        >
+          {parsedData}
         </div>
       );
     } else if (field.type === "thumbnail_gallery") {
       html.push(
-        <div className="prose lg:prose-lg xl:prose-xl dark:prose-dark">
-          <ThumbnailGallery value={field.value as ImageType[]} key={uuidv4()} />
+        <div
+          key={field.id}
+          className="prose lg:prose-lg xl:prose-xl dark:prose-dark"
+        >
+          <ThumbnailGallery value={field.value as ImageType[]} />
         </div>
       );
     } else if (field.type === "image_text") {
       html.push(
-        <div className="prose lg:prose-lg xl:prose-xl dark:prose-dark">
-          <ImageText value={field.value as ImageTextType} key={uuidv4()} />
+        <div
+          key={field.id}
+          className="prose lg:prose-lg xl:prose-xl dark:prose-dark"
+        >
+          <ImageText value={field.value as ImageTextType} />
         </div>
       );
     } else if (field.type === "image_carousel") {
       html.push(
-        <ImageCarousel value={field.value as ImageType[]} key={uuidv4()} />
+        <div key={field.id}>
+          <ImageCarousel value={field.value as ImageType[]} />
+        </div>
       );
     } else {
       // fallback empty div
-      html.push(<div className={field.type} key={uuidv4()} />);
+      html.push(<div key={field.id} className={field.type} />);
     }
   });
 

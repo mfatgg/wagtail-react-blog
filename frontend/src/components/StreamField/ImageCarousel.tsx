@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from "react-responsive-carousel";
@@ -14,20 +14,16 @@ type ItemWithUidType = {
 };
 
 function ImageCarousel({ value }: ImageCarouselInterface) {
-  const [itemsWithUid, setItemsWithUid] = useState<ItemWithUidType[]>([]);
+  const [itemsWithUid] = useState<ItemWithUidType[]>(
+    value.map((item) => ({ uid: uuidv4(), image: item }))
+  );
 
-  useEffect(() => {
-    setItemsWithUid(value.map((item) => ({ uid: uuidv4(), image: item })));
-  }, []);
-
-  return itemsWithUid ? (
+  return (
     <Carousel autoPlay infiniteLoop showStatus={false} showThumbs={false}>
       {itemsWithUid.map((item) => (
         <BaseImage img={item.image} key={item.uid} />
       ))}
     </Carousel>
-  ) : (
-    ""
   );
 }
 

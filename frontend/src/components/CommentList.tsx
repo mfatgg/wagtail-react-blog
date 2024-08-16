@@ -1,13 +1,29 @@
 import React, { useState, useEffect } from "react";
-import useSWR, { mutate } from "swr";
+import useSWR, { mutate, Fetcher } from "swr";
 import DOMPurify from "dompurify";
 import HtmlReactParser from "html-react-parser";
 import CommentForm from "./CommentForm";
 import { getPage } from "../utils";
 import useOnScreen from "../hooks/useOnScreen";
+import { PageContentType } from "./BaseTypes";
+
+type CommentListInterface = {
+  pageContent: PageContentType;
+};
+
+type CommentType = {
+  pk: number;
+  userName: string;
+  submitDate: string;
+  parsedComment: string;
+};
+
+type FetcherType = {
+  count: number;
+};
 
 // https://swr.vercel.app/docs/arguments
-const fetcher = (args) => {
+const fetcher: Fetcher<FetcherType> = (args: string) => {
   const [url, objectPk, contentType] = args;
   return getPage(url, {
     objectPk,
@@ -15,19 +31,18 @@ const fetcher = (args) => {
   });
 };
 
-function CommentList(props) {
-  const { pageContent } = props;
+function CommentList({ pageContent }: CommentListInterface) {
   const { id: objectPk, contentTypeStr: contentType } = pageContent;
 
-  const ref = React.useRef();
+  const ref = React.useRef(null);
   const isVisible = useOnScreen(ref);
 
   const [commentsCount, setCommentsCount] = useState(0);
-  const [loadComments, setLoadComments] = useState([]);
+  const [loadComments, setLoadComments] = useState<CommentType[]>([]);
 
   const COMMENTS_API_URL = "/api/v1/comments/";
   const key = [COMMENTS_API_URL, objectPk, contentType];
-  const { data } = useSWR(key, fetcher);
+  const { data } = useSWR<FetcherType>(key, fetcher);
 
   const refreshForNewComment = () => {
     mutate(key);
@@ -93,7 +108,10 @@ function CommentList(props) {
         </div>
       ))}
       <div ref={ref} />
-      <CommentForm refreshForNewComment={refreshForNewComment} {...props} />
+      <CommentForm
+        refreshForNewComment={refreshForNewComment}
+        pageContent={pageContent}
+      />
     </div>
   );
 }

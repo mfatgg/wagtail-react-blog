@@ -4,7 +4,21 @@ import snakecaseKeys from "snakecase-keys";
 
 const API_BASE = process.env.REACT_APP_API_BASE;
 
-export async function getRequest(url, params, options) {
+type HeadersType = {
+  [key: string]: string;
+};
+
+export type ParamsType = Record<string, string | number | undefined>;
+
+type OptionsType = {
+  headers: HeadersType;
+};
+
+export async function getRequest(
+  url: string,
+  params?: ParamsType,
+  options?: OptionsType
+) {
   let paramsOrEmpty = params || {};
   paramsOrEmpty = snakecaseKeys(paramsOrEmpty, { deep: true });
 
@@ -20,17 +34,26 @@ export async function getRequest(url, params, options) {
   return camelcaseKeys(data, { deep: true });
 }
 
-export async function getPage(path, params, options) {
+export async function getPage(
+  path?: string,
+  params?: ParamsType,
+  options?: OptionsType
+) {
   const paramsOrEmpty = params || {};
   let relativePath = path;
-  if (relativePath.indexOf("/") !== 0) {
+  if (relativePath?.indexOf("/") !== 0) {
     relativePath = `/${relativePath}`;
   }
 
   return getRequest(`${API_BASE}${relativePath}`, paramsOrEmpty, options);
 }
 
-export async function getPagePreview(contentType, token, params, options) {
+export async function getPagePreview(
+  contentType: string,
+  token: string,
+  params: ParamsType,
+  options: OptionsType
+) {
   let paramsOrEmpty = params || {};
   paramsOrEmpty = {
     contentType,
@@ -45,7 +68,11 @@ export async function getPagePreview(contentType, token, params, options) {
   );
 }
 
-export async function postRequest(url, params, options) {
+export async function postRequest(
+  url: string,
+  params?: ParamsType,
+  options?: OptionsType
+) {
   let paramsOrEmpty = params || {};
   paramsOrEmpty = snakecaseKeys(paramsOrEmpty, { deep: true });
 
@@ -64,10 +91,13 @@ export async function postRequest(url, params, options) {
   return camelcaseKeys(data, { deep: true });
 }
 
-export function convertWagtailUrlToRelative(url) {
-  return url.replace(API_BASE, "");
+export function convertWagtailUrlToRelative(url: string) {
+  if (API_BASE) {
+    return url.replace(API_BASE, "");
+  }
+  return url;
 }
 
-export function classNames(...classes) {
+export function classNames(...classes: Array<string>) {
   return classes.filter(Boolean).join(" ");
 }

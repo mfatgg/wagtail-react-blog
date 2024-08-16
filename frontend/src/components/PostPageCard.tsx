@@ -1,9 +1,13 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import BaseImage from "./BaseImage";
+import { PostDetailInterface } from "./PostDetail";
 
-function PostPageCard(props) {
-  const { post } = props;
+type PostPageCardInterface = {
+  post: PostDetailInterface;
+};
+
+function PostPageCard({ post }: PostPageCardInterface) {
   const { pageContent } = post;
   const dateStr = new Date(pageContent.lastPublishedAt).toUTCString();
 
