@@ -1,13 +1,7 @@
 import React from "react";
+import { ImageType } from "./BaseTypes";
 
 const API_BASE = process.env.REACT_APP_API_BASE;
-
-export type ImageType = {
-  url: string;
-  width: number;
-  height: number;
-  alt: string;
-};
 
 type BaseImageInterface = {
   img: ImageType;

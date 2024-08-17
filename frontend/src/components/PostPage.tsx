@@ -4,7 +4,10 @@ import SideBar, { SideBarInterface } from "./SideBar";
 import TopNav from "./TopNav";
 import Footer from "./Footer";
 
-type PostPageInterface = SideBarInterface & PostDetailInterface;
+export type PostPageInterface = {
+  pageType: "PostPage";
+} & SideBarInterface &
+  PostDetailInterface;
 
 function PostPage(props: PostPageInterface) {
   return (

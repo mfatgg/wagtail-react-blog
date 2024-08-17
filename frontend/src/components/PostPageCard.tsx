@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import BaseImage from "./BaseImage";
 import { PostDetailInterface } from "./PostDetail";
 
-type PostPageCardInterface = {
+export type PostPageCardInterface = {
   post: PostDetailInterface;
 };
 

@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import { getPage } from "../utils";
-import LazyPages from "./LazyPages";
 import LoadingScreen from "./LoadingScreen";
+import getViewByPageType from "./LazyPages";
 
-function PageProxy(props) {
+type PageProxyInterface = Record<string, object>;
+
+function PageProxy(props: PageProxyInterface) {
   const location = useLocation();
-  const [pageView, setPageView] = useState(null);
+  const [pageView, setPageView] = useState<React.JSX.Element | null>(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -16,8 +18,7 @@ function PageProxy(props) {
         setLoading(true);
         const data = await getPage(location.pathname);
         const { pageType } = data;
-        const PageComponent = LazyPages[pageType];
-        const view = <PageComponent {...props} {...data} />;
+        const view = getViewByPageType(pageType, props, data);
         setPageView(view);
       } catch (err) {
         // eslint-disable-next-line no-console

@@ -1,14 +1,9 @@
 import React from "react";
 import DOMPurify from "dompurify";
 import HtmlReactParser from "html-react-parser";
-import BaseImage, { ImageType } from "../BaseImage";
+import BaseImage from "../BaseImage";
 import { classNames } from "../../utils";
-
-export type ImageTextType = {
-  text: string;
-  image: ImageType;
-  reverse: boolean;
-};
+import { ImageTextType } from "../BaseTypes";
 
 type ImageTextInterface = {
   value: ImageTextType;

@@ -1,10 +1,11 @@
 import React from "react";
-import TagWidget, { TagsList } from "./TagWidget";
-import CategoryWidget, { CategoriesList } from "./CategoryWidget";
+import TagWidget from "./TagWidget";
+import CategoryWidget from "./CategoryWidget";
 import SearchForm from "./SearchForm";
 import BookCard from "./BookCard";
+import { CategoriesListType, TagsListType } from "./BaseTypes";
 
-export type SideBarInterface = CategoriesList & TagsList;
+export type SideBarInterface = CategoriesListType & TagsListType;
 
 function SideBar({ categoriesList, tagsList }: SideBarInterface) {
   return (

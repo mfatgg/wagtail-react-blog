@@ -2,15 +2,9 @@ import React from "react";
 import DOMPurify from "dompurify";
 import HtmlReactParser from "html-react-parser";
 import ThumbnailGallery from "./ThumbnailGallery";
-import ImageText, { ImageTextType } from "./ImageText";
+import ImageText from "./ImageText";
 import ImageCarousel from "./ImageCarousel";
-import { ImageType } from "../BaseImage";
-
-export type StreamFieldType = {
-  type: string;
-  value: string | ImageType[] | ImageTextType;
-  id: string;
-};
+import { ImageType, ImageTextType, StreamFieldType } from "../BaseTypes";
 
 type StreamFieldInterface = {
   value: StreamFieldType[];

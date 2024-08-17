@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from "react-responsive-carousel";
-import BaseImage, { ImageType } from "../BaseImage";
+import BaseImage from "../BaseImage";
+import { ImageType } from "../BaseTypes";
 
 type ImageCarouselInterface = {
   value: ImageType[];

@@ -5,8 +5,6 @@ import CommentList from "./CommentList";
 import { PageContentType } from "./BaseTypes";
 
 export type PostDetailInterface = {
-  // eslint-disable-next-line react/no-unused-prop-types
-  pageType: string;
   pageContent: PageContentType;
 };
 

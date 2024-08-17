@@ -51,8 +51,8 @@ export async function getPage(
 export async function getPagePreview(
   contentType: string,
   token: string,
-  params: ParamsType,
-  options: OptionsType
+  params?: ParamsType,
+  options?: OptionsType
 ) {
   let paramsOrEmpty = params || {};
   paramsOrEmpty = {

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
-import BaseImage, { ImageType } from "../BaseImage";
+import BaseImage from "../BaseImage";
+import { ImageType } from "../BaseTypes";
 
 type ItemWithUidType = {
   uid: string;

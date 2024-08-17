@@ -5,7 +5,7 @@ import React from "react";
 import { screen, render } from "@testing-library/react";
 import camelcaseKeys from "camelcase-keys";
 import { MemoryRouter } from "react-router-dom";
-import BlogPage from "./BlogPage";
+import BlogPage, { BlogPageInterface } from "./BlogPage";
 import blogPageData from "./mockData";
 import PostPageCardContainer from "./PostPageCardContainer";
 import SideBar from "./SideBar";
@@ -39,7 +39,7 @@ test("BlogPage Test", () => {
 
   const { asFragment } = render(
     <MemoryRouter>
-      <BlogPage {...data} />
+      <BlogPage {...(data as BlogPageInterface)} />
     </MemoryRouter>
   );
 

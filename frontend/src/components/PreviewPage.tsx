@@ -1,31 +1,37 @@
 import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import { getPagePreview } from "../utils";
-import LazyPages from "./LazyPages";
+import getViewByPageType from "./LazyPages";
 import LoadingScreen from "./LoadingScreen";
+import { DictionaryType } from "./BaseTypes";
 
-function PreviewPage(props) {
+type PreviewPageInterface = Record<string, object>;
+
+function PreviewPage(props: PreviewPageInterface) {
   const location = useLocation();
-  const [pageView, setPageView] = useState(null);
+  const [pageView, setPageView] = useState<React.JSX.Element | null>(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchPageData = async () => {
       // convert querystring to dict
       const querystring = location.search.replace(/^\?/, "");
-      const params = {};
+      const params: DictionaryType = {};
       querystring.replace(/([^=&]+)=([^&]*)/g, (m, key, value) => {
         params[decodeURIComponent(key)] = decodeURIComponent(value);
+        return m;
       });
 
       const { content_type: contentType, token } = params;
       setLoading(true);
       try {
-        const data = await getPagePreview(contentType, token);
+        const data = await getPagePreview(
+          contentType as string,
+          token as string
+        );
 
         const { pageType } = data;
-        const PageComponent = LazyPages[pageType];
-        const view = <PageComponent {...props} {...data} />;
+        const view = getViewByPageType(pageType, props, data);
         setPageView(view);
       } catch (err) {
         // eslint-disable-next-line no-console
@@ -42,7 +48,9 @@ function PreviewPage(props) {
   }
 
   if (pageView) {
-    return <React.Suspense fallback={LoadingScreen}>{pageView}</React.Suspense>;
+    return (
+      <React.Suspense fallback={<LoadingScreen />}>{pageView}</React.Suspense>
+    );
   }
   return <div>Error when loading content</div>;
 }

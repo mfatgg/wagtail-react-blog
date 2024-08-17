@@ -2,17 +2,8 @@ import React from "react";
 import { useLocation, Link, Location } from "react-router-dom";
 import PostPageCard from "./PostPageCard";
 import { classNames } from "../utils";
+import { PaginatorType, FilterMetaType } from "./BaseTypes";
 import { PostDetailInterface } from "./PostDetail";
-
-type PaginatorType = {
-  currentPage: number;
-  numPages: number;
-};
-
-type FilterMetaType = {
-  filterType: string | null;
-  filterTerm: string | null;
-};
 
 export type PostPageCardContainerInterface = {
   childrenPages: PostDetailInterface[];

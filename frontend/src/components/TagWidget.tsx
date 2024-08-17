@@ -1,17 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { TagsListType } from "./BaseTypes";
 
-export type TagType = {
-  name: string;
-  slug: string;
-  url: string;
-};
-
-export type TagsList = {
-  tagsList: TagType[];
-};
-
-function TagWidget({ tagsList }: TagsList) {
+function TagWidget({ tagsList }: TagsListType) {
   return (
     <div className="mb-4 border rounded-lg border-opacity-75 border-gray-300 shadow-xl overflow-hidden dark:border-gray-500">
       <div className="bg-gray-100 text-gray-900 px-6 py-4 dark:bg-gray-700 dark:text-gray-400">

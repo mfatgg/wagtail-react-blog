@@ -6,8 +6,10 @@ import PostPageCardContainer, {
   PostPageCardContainerInterface,
 } from "./PostPageCardContainer";
 
-export type BlogPageInterface = PostPageCardContainerInterface &
-  SideBarInterface;
+export type BlogPageInterface = {
+  pageType: "BlogPage";
+} & SideBarInterface &
+  PostPageCardContainerInterface;
 
 function BlogPage(props: BlogPageInterface) {
   return (
