@@ -10,6 +10,7 @@ export default {
   output: {
     filename: "bundle.js",
     path: path.resolve(__dirname, "./dist"),
+    publicPath: "/",
   },
   target: "web",
   resolve: {
