@@ -10,7 +10,9 @@ type SearchQueryType = string | readonly string[] | number;
 type LoadResultsType = {
   id: number;
   meta: {
+    detailUrl: string;
     htmlUrl: string;
+    type: string;
   };
   title: string;
 }[];
