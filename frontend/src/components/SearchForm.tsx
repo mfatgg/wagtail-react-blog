@@ -6,8 +6,8 @@ function SearchForm() {
 
   const [searchQuery, setSearchQuery] = useState("");
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const handleSubmit = (event: React.ChangeEvent<HTMLFormElement>) => {
+    event.preventDefault();
 
     navigate({
       pathname: "/search/",

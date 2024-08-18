@@ -8,7 +8,10 @@ type HeadersType = {
   [key: string]: string;
 };
 
-export type ParamsType = Record<string, string | number | undefined>;
+export type ParamsType = Record<
+  string,
+  string | readonly (string | null)[] | number | undefined
+>;
 
 type OptionsType = {
   headers: HeadersType;

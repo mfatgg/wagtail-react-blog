@@ -5,9 +5,28 @@ import TopNav from "./TopNav";
 import Footer from "./Footer";
 import { getPage, convertWagtailUrlToRelative } from "../utils";
 
+type SearchQueryType = string | readonly string[] | number;
+
+type LoadResultsType = {
+  id: number;
+  meta: {
+    htmlUrl: string;
+  };
+  title: string;
+}[];
+
+type StateType = {
+  searchQuery: SearchQueryType;
+  inputSearch: SearchQueryType;
+  loading: boolean;
+  hasMore: boolean;
+  loadResults: LoadResultsType;
+  btnSearch: boolean;
+};
+
 function SearchPage() {
   const location = useLocation();
-  const [state, setState] = useState({
+  const [state, setState] = useState<StateType>({
     searchQuery: "",
     inputSearch: "",
     loading: true,
@@ -18,8 +37,8 @@ function SearchPage() {
   const { searchQuery, inputSearch, loading, hasMore, loadResults, btnSearch } =
     state;
 
-  const queryParams = querystring.parse(location.search);
-  const searchQueryString = queryParams.query;
+  const queryParams = querystring.parse(location.search) || "";
+  const searchQueryString = queryParams.query as SearchQueryType;
 
   useEffect(() => {
     // When page load with querystring, we set searchQuery
@@ -56,7 +75,7 @@ function SearchPage() {
     }
   }, [searchQuery, loading, loadResults]);
 
-  const handleLoadMoreClick = (e) => {
+  const handleLoadMoreClick = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
 
     setState((stateSetting) => ({
@@ -65,7 +84,7 @@ function SearchPage() {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     setState((stateSetting) => ({
