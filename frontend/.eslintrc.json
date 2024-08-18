@@ -39,7 +39,7 @@
         "tsx": "never"
       }
     ],
-    "indent": ["error", 2],
+    "indent": ["error", 2, { "SwitchCase": 1 }],
     "jsx-a11y/href-no-hash": ["off"],
     "linebreak-style": ["error", "unix"],
     "max-len": [

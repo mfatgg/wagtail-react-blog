@@ -14,11 +14,11 @@ export default function getViewByPageType(
   data: DataType
 ) {
   switch (pageType) {
-  case "BlogPage":
-    return <BlogPage {...props} {...(data as BlogPageInterface)} />;
-  case "PostPage":
-    return <PostPage {...props} {...(data as PostPageInterface)} />;
-  default:
-    return null;
+    case "BlogPage":
+      return <BlogPage {...props} {...(data as BlogPageInterface)} />;
+    case "PostPage":
+      return <PostPage {...props} {...(data as PostPageInterface)} />;
+    default:
+      return null;
   }
 }
